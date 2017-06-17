@@ -1,0 +1,16 @@
+<h1>Scrape Stroage</h1>
+<div ng-if="vm.message" class="alert alert-success" role="alert">
+  <p>{{ vm.message }}</p>
+</div>
+<div ng-if="vm.error" class="alert alert-danger" role="alert">
+  {{ vm.error }}
+</div>
+<form  name="submiturl" ng-submit="vm.submiturl()">
+  
+  <div class="form-group">
+    <label for="url">URL</label>
+    <input type="url" class="form-control" placeholder="URL" ng-model="vm.url" autocapitalize="none">
+  </div>
+  
+  <button type="submit" class="btn btn-success">Scrape</button>
+</form>

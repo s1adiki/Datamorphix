@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html ng-app="meanhotel">
+<head>
+  <title>Intellisoft Bots</title>
+  <!-- <meta name="viewport" content="width=device-width, initial-scale=1"> -->
+  <link href="css/bootstrap.min.css" rel="stylesheet"/>
+  <!-- <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"> -->
+  <link href="css/custom.css" rel="stylesheet"/>
+</head>
+<body>
+
+  <mh-navigation></mh-navigation>
+  <div class="container">
+    <div ng-view></div>
+  </div>
+
+  <footer class="footer">
+    <div class="container">
+      <p class="text-muted text-center">
+        <a href="http://www.intellisofttech.com" target="_blank"><img src="/images/intel.png" height="26" width="100"  alt="Intellisoft Technologies"/></a>
+      </p>
+
+      <p class="text-muted text-center">
+        <small>Copyright ©2017 IntelliSoft Technologies, Inc  All rights reserved.</small>
+      </p>
+    </div>
+  </footer>
+
+  <script src="jquery/jquery-2.1.4.min.js"></script>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+  <script src="node_modules/angular/angular.js"></script>
+  <script src="node_modules/angular-route/angular-route.js"></script>
+  <script src="node_modules/angular-jwt/dist/angular-jwt.js"></script>
+  <script src="angular-app/app.js"></script>
+  
+  <script src="angular-app/Bot-store/botstore.js"></script>
+  
+  
+  <script src="angular-app/UserDataFactory/user_data_factory.js"></script>
+  <script src="angular-app/infobot/infobot.js"></script>
+
+  <script src="angular-app/register/register-controller.js"></script>
+  <script src="angular-app/scrape/scrapController.js"></script>
+  <script src="angular-app/navigation-directive/navigation-directive.js"></script>
+  <script src="angular-app/login/login-controller.js"></script>
+  <script src="angular-app/profile/profileController.js"></script>
+  <script src="angular-app/auth/auth-factory.js"></script>
+  <script src="angular-app/auth/auth-interceptor.js"></script>
+</body>
+</html>
