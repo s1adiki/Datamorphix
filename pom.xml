@@ -2,21 +2,19 @@
 	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
 	<modelVersion>4.0.0</modelVersion>
 
-	<groupId>bot.ATM</groupId>
-	<artifactId>ATM</artifactId>
+	<groupId>bot.Branches</groupId>
+	<artifactId>Branches</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
 	<packaging>war</packaging>
 
 
-	<name>ATM</name>
+	<name>Branches</name>
 	<parent>
 		<groupId>org.springframework.boot</groupId>
 		<artifactId>spring-boot-starter-parent</artifactId>
 		<version>1.1.5.RELEASE</version>
 	</parent>
-	<properties>
-		<start-class>bot.ATM.ATMApplication</start-class>
-	</properties>
+
 
 	<dependencies>
 		<!-- marked the embedded servlet container as provided -->
@@ -48,13 +46,13 @@
 	</dependencies>
 
 	<build>
-	<finalName> ATM </finalName>
+		<finalName> Branch </finalName>
 		<plugins>
 			<plugin>
 				<groupId>org.springframework.boot</groupId>
 				<artifactId>spring-boot-maven-plugin</artifactId>
 				<configuration>
-					<mainClass>bot.ATM.ATMApplication</mainClass>
+					<mainClass>bot.Branches.BranchApplication</mainClass>
 				</configuration>
 			</plugin>
 			<plugin>
@@ -75,7 +73,7 @@
 					<server>TomcatServer</server>
 					<username>ubuntu</username>
 					<password>ubuntu</password>
-					<path>/ATM</path>
+					<path>/Branch</path>
 					<update>true</update>
 				</configuration>
 			</plugin>
