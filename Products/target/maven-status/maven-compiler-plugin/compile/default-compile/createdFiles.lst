@@ -1,0 +1,4 @@
+bot\Products\ProductApplication.class
+bot\Products\Products.class
+bot\Products\ProductController.class
+bot\Products\ProductRepository.class
