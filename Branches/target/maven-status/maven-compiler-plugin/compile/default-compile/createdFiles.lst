@@ -1,0 +1,4 @@
+bot\Branches\BranchController.class
+bot\Branches\BranchRepository.class
+bot\Branches\Branch.class
+bot\Branches\BranchApplication.class
