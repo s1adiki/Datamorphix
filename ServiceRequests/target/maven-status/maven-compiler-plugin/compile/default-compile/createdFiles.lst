@@ -1,0 +1,4 @@
+bot\ServiceRequests\ServiceRepository.class
+bot\ServiceRequests\ServiceApplication.class
+bot\ServiceRequests\ServiceController.class
+bot\ServiceRequests\ServiceRequests.class
