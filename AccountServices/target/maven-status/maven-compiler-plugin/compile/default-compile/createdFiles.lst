@@ -1,0 +1,5 @@
+bot\AccountServices\AccountRepo.class
+bot\AccountServices\AccountsApplication.class
+bot\AccountServices\AccountsController.class
+bot\AccountServices\Accounts.class
+bot\AccountServices\AccountInfo.class
