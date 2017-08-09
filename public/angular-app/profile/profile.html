@@ -1,8 +1,249 @@
-<div ng-controller="LoginController as vm" ng-init="vm.init()">
-	<!-- <ul ng-if="vm.isLoggedIn()" class="nav navbar-nav navbar-right">
-		<li><p class="navbar-text">This is a profile of {{ vm.loggedInUser }}</p></li>
-		<li><button class="navbar-btn btn-sm btn-info" ng-click="vm.logout()">Logout</button></li> 
-    </ul> -->
+<h1>Profile</h1></br></br>
+<div ng-if="vm.message" id="message" class="alert alert-success" role="alert">
+  <p>{{ vm.message }}</p>
+</div>
+<div ng-if="vm.error" ng-show="readwrite" class="alert alert-danger" role="alert">
+  {{ vm.error }}
+</div>
+<form ng-hide="vm.message"  ng-init="vm.profile()" name="register">
+  
+  <button type="submit" ng-click="vm.edit()" class="rgstr_btn" ng-show="edit" style="left:1010px;">Edit</button>
+  <button type="submit" class="rgstr_btn" ng-show="edit_update" ng-click="vm.profile_update()" style="left:900px;">Update</button>
+  <button type="submit" class="rgstr_btn" ng-show="cancel" ng-click="vm.cancel_update()" style="left:900px;">Cancel</button>
+  <div class="form-group" >
+    <label for="username" class='lbl_rgstr'>Username</label>
+    <input type="text_register" class="form-control" ng-show="readwrite" id="username" placeholder="Username" ng-readonly="vm.username" ng-model="vm.username1" autocapitalize="none" required>
+    <input type="text_register" class="form-control" ng-show="read" id="username" placeholder="Username" ng-readonly="vm.username" ng-model="vm.username" autocapitalize="none" required>
+  </div>
+ <!--  <div class="form-group" style="position: relative;width: 45%;left: 590px;bottom: 100px;">
+    <label for="password" class='lbl_rgstr'>Password</label>
+    <input type="password_register" class="form-control" id="password" placeholder="Password" ng-model="vm.password" autocapitalize="none" required>
+  </div>
+  <div class="form-group" >
+    <label for="password-repeat" class='lbl_rgstr'>Confirm Password</label>
+    <input type="password_register" class="form-control" id="password-repeat" placeholder="Confirm Password" ng-model="vm.passwordRepeat" autocapitalize="none" required>
+  </div> -->
+  <div class="form-group" >
+    <label for="email" class='lbl_rgstr' >E-Mail</label>
+    <input type="email_register" class="form-control" id="email" ng-show="readwrite" placeholder="E-Mail" ng-model="vm.eMail" autocapitalize="none" required>
+    <input type="email_register" class="form-control" id="email" ng-show="read" placeholder="E-Mail" ng-model="vm.eMail1" ng-readonly="vm.eMail1" autocapitalize="none" required>
+  </div>
+  <div class="form-group" >
+    <label for="number" class='lbl_rgstr' >Password  </label>
+    <input type="Password" style="width:50%;" class="form-control" id="contact" ng-show="readwrite" placeholder="Enter Password" ng-model="vm.password" ng-readonly="vm.password"autocapitalize="none" required>
+    <input type="Password" style="width:50%;" class="form-control" id="contact" ng-show="read" placeholder="Contact Number" ng-model="vm.password" ng-readonly="vm.password" autocapitalize="none" required>
+  </div>
+   <div class="form-group" >
+    <button type="submit" ng-click="vm.changepswrd()" class="rgstr_btn" >Change Password</button>
+    <!-- <label for="Organisation name" class='lbl_rgstr' >Organisation Name</label>
+    <input type="text_register" class="form-control" id="org_username" ng-show="readwrite" placeholder="Organisation Name" ng-model="vm.org_username" autocapitalize="none" required>
+    <input type="text_register" class="form-control" id="org_username" ng-show="read" placeholder="Organisation Name" ng-readonly="vm.org_username1" ng-model="vm.org_username1" autocapitalize="none" required> -->
+  </div>
+  <div class="form-group" >
+    <label for="number" class='lbl_rgstr' >Mobile Phone  </label>
+    <input type="text_register" class="form-control" id="contact" ng-show="readwrite" placeholder="Contact Number" ng-model="vm.contact" autocapitalize="none" required>
+    <input type="text_register" class="form-control" id="contact" ng-show="read" placeholder="Contact Number" ng-model="vm.contact1" ng-readonly="vm.contact1" autocapitalize="none" required>
+  </div>
+    <div class="form-group" >
+    <label for="Organisation name" class='lbl_rgstr' >Organisation Name</label>
+    <input type="text_register" class="form-control" id="org_username" ng-show="readwrite" placeholder="Organisation Name" ng-model="vm.org_username" autocapitalize="none" required>
+    <input type="text_register" class="form-control" id="org_username" ng-show="read" placeholder="Organisation Name" ng-readonly="vm.org_username1" ng-model="vm.org_username1" autocapitalize="none" required>
+  </div>
+<!--   <div class="dropdown">
+    <button class="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown">Dropdown Example
+    <span class="caret"></span></button>
+    <ul class="dropdown-menu">
+      <li><a href="#">HTML</a></li>
+      <li><a href="#">CSS</a></li>
+      <li><a href="#">JavaScript</a></li>
+    </ul>
+  </div> --></br></br>
+  <div class="form-group" style="position:relative;">
+    <label for="Type Of Bot" class='lbl_rgstr' style="position:absolute;">Bots Assigned</label>
+  <!-- <div class="dropdown">
+  <button class="dropbtn module_btn" style="width: 200px;">Bot Type  &nbsp&nbsp&nbsp &nbsp&nbsp></a></button>
+  <div class="dropdown-content">
+    <a href="" ng-click="vm.personal()">Information Bot</a>
+    <a href="">Service BOT</a>
+    <a href="">Help BOT</a>
+  </div>
+</div> -->
+<div id="read_drp" ng-show= "read_drp" style="position:relative;left:46%;max-width:20%;top:-15%;"><div class="input-group-btn select"  >    <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-expanded="false"><span class="selected">Assigned Bots</span> <span class="caret"></span></button>    <ul class="dropdown-menu" style="width: 228px;" role="menu">
+<div id="append_drp_div"></div>
+</ul></div></div></br></br>
+<div id="readwrite_drp" ng-show= "readwrite_drp">
+<div style="position:relative;top:-55px">
+      <label class="checkbox"  style="font-size:16px;position: relative; left: 25%;"><input type="checkbox" ng-checked="pf_s1" ng-model="vm.info_chk" ng-change="vm.bot_type_info(vm.info_chk)">Information BOT</label></br>
+    
+     <label class="checkbox" style="font-size:16px; position: relative; left: 25%;"><input type="checkbox"  ng-checked="pf_s2" ng-model="vm.service_chk" ng-change="vm.bot_type_service(vm.service_chk)">Service BOT</label> </br>
+     <label class="checkbox" style="font-size:16px; position: relative; left: 25%;"><input type="checkbox"  ng-checked="pf_s3" ng-model="vm.help_chk" ng-change="vm.bot_type_help(vm.help_chk)">Help BOT</label>
+</div>
+<div ng-show="info_drpdwn" style="position:absolute">
+<!-- <label for="email" class='lbl_rgstr'>AVG Number of Customers per instance</label> -->
+  <!--   <div class="dropdown" style="position:absolute">
+  <button class="dropbtn module_btn" style="width: 400px;left: 500px;top: -190px;">AVG Number of Customers per instance</a></button>
+  <div class="dropdown-content" style="width: 400px;left: 500px;top: -120px;">
+    
+    <a href="" ng-click="vm.personal()">Information Bot</a>
+    <a href="">Service BOT</a>
+    <a href="">Help BOT</a>
+    
 
- <h1 ng-if="vm.isLoggedIn()">This is a profile page{{vm.loggedInUser}}</h1> 
+  </div>
+</div> -->
+<div class="input-group-btn select" style="width: 400px;left: 500px;top: -240px;" id="profile_select1">
+    <button type="button"  class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-expanded="false"><span class="selected">AVG Number of Visitors per day</span> <span class="caret"></span></button>
+    <ul class="dropdown-menu option" style="width: 400px;" role="menu">
+        <li id="1"><a ng-click="vm.change(profile_select1)" href="">Less than    < 100</a></li>
+        <li id="2"><a ng-click="vm.change(profile_select1)" href="">Between  100 - 300</a></li>
+        <li id="3"><a ng-click="vm.change(profile_select1)" href="">Between  300 - 500</a></li>
+        <li id="4"><a ng-click="vm.change(profile_select1)" href="">Greater than > 500</a></li>
+    </ul>
+</div>
+  </div>
+  <div ng-show="service_drpdwn" style="position:absolute" >
+<!-- <label for="email" class='lbl_rgstr'>AVG Number of Customers per instance</label> -->
+  
+<div class="input-group-btn select" style="width: 400px;left: 500px;top: -170px;" id="profile_select2">
+    <button type="button" id="pf_s2" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-expanded="false"><span class="selected">AVG Number of Service requests per day</span> <span class="caret"></span></button>
+    <ul class="dropdown-menu option" style="width: 400px;" role="menu">
+        <li id="1"><a ng-click="vm.change(profile_select2)" href="">Less than    < 50</a></li>
+        <li id="2"><a ng-click="vm.change(profile_select2)" href="">Between   50 - 100</a></li>
+        <li id="3"><a ng-click="vm.change(profile_select2)" href="">Between  100 - 200</a></li>
+        <li id="4"><a ng-click="vm.change(profile_select2)" href="">Greater than > 200</a></li>
+    </ul>
+</div>
+            
+
+   <!--  <div class="dropdown" >
+  <button class="dropbtn module_btn" style="width: 400px;left: 500px;top: -120px;">AVG Number of Customers per instance</a></button>
+  <div class="dropdown-content" style="width: 400px;left: 500px;top: -50px;">
+    <a href="" ng-click="vm.personal()">Information Bot</a>
+    <a href="">Service BOT</a>
+    <a href="">Help BOT</a>
+  </div>
+</div> -->
+  </div>
+  <div ng-show="help_drpdwn" style="position:absolute" >
+<!-- <label for="email" class='lbl_rgstr'>AVG Number of Customers per instance</label> -->
+<!--     <div class="dropdown" style="position:absolute" >
+  <button class="dropbtn module_btn" style="width: 400px;left: 500px;top: -50px;">AVG Number of Customers per instance</a></button>
+  <div class="dropdown-content" style="width: 400px;left: 500px;top: 20px;">
+    <a href="" ng-click="vm.personal()">Information Bot</a>
+    <a href="">Service BOT</a>
+    <a href="">Help BOT</a>
+  </div>
+</div> -->
+<div class="input-group-btn select"  style="width: 400px;left: 500px;top: -100px;" id="profile_select3">
+    <button type="button" id="pf_s3" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-expanded="false"><span class="selected">AVG Number of Visitors per day</span> <span class="caret"></span></button>
+    <ul class="dropdown-menu option" style="width: 400px;" role="menu">
+        <li id="1"><a ng-click="vm.change(profile_select3)" href="">Less than    < 100</a></li>
+        <li id="2"><a ng-click="vm.change(profile_select3)" href="">Between  100 - 300</a></li>
+        <li id="3"><a ng-click="vm.change(profile_select3)" href="">Between  300 - 500</a></li>
+        <li id="4"><a ng-click="vm.change(profile_select3)" href="">Greater than > 500</a></li>
+    </ul>
+</div>
+
+
+
+
+
+  </div></div>
+</div></br>
+  <button type="submit" class="rgstr_btn" ng-show="edit_update" ng-click="vm.profile_update()" style="position:relative;">Update</button>
+  <button type="submit" class="rgstr_btn" ng-show="cancel" ng-click="vm.cancel_update()" style="position:relative;">Cancel</button>
+ <!--  <label for="inputPhone" class="col-sm-3 control-label">Phone :</label>
+  <div class="col-sm-9">
+  <input type="number" 
+                   class="form-control" 
+                   ng-minlength="10" 
+                   ng-maxlength="10"  
+                   id="inputPhone" 
+                   name="phone" 
+                   placeholder="Phone" 
+                   ng-model="user.phone"
+                   ng-required="true">
+            <span class="help-block" 
+                  ng-show="registration.phone.$error.required || 
+                           registration.phone.$error.number">
+                           Valid phone number is required
+            </span>
+            <span class="help-block" 
+                  ng-show="((registration.phone.$error.minlength ||
+                           registration.phone.$error.maxlength) && 
+                           registration.phone.$dirty) ">
+                           phone number should be 10 digits
+            </span>
+          </div> -->
+</form></br></br>
+
+<!-- <div id="passwrd_change" class="modal1">
+  
+  <form name="userForm" class="modal-content1 animate" ng-submit="vm.passwrd_change()">
+    <div class="imgcontainer">
+      <span onclick="document.getElementById('passwrd_change').style.display='none'" ng-click="vm.clear()" class="close" title="Close">&times;</span>
+      
+    </div>
+
+    <div class="container">
+      <label class="lbl_popup"><b>Current Password</b></label>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp 
+      <input type="password" placeholder="Enter Current Password"  ng-model="vm.currentpassword" required><br></br>
+
+      <label class="lbl_popup"><b>New Password</b></label>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp 
+      <input type="password" placeholder="Enter New Password"  ng-model="vm.newpassword" required>
+      <label class="lbl_popup"><b>Repeat Password</b></label>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp 
+      <input type="password" placeholder="Repeat New Password"  ng-model="vm.repeatpassword" required>
+      <div ng-if="vm.error" class="error_lgn" role="alert">
+  {{ vm.error }}
+</div>        <br></br>
+      
+      
+   
+    </div>
+
+    <div class="container_login" style="background-color:#f1f1f1">
+      <button type="submit" class="login_btn" style="position: relative;left: 25%;">Login</button>
+
+    </div>
+  </form>
+</div> -->
+
+
+<div id="passwrd_change" class="modal1 ">
+  
+  <form class="modal-content1 animate" ng-click='validate()' ng-submit="vm.passwrd_change()">
+    <div class="imgcontainer">
+      <span  onclick="document.getElementById('passwrd_change').style.display='none'" ng-click="" class="close" title="Close"> &times;</span>
+      
+    </div>
+
+    <div class="container">
+    </br></br>
+      <label class="lbl_popup"><b>Current Password</b></label>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp 
+      <input type="password" placeholder="Enter Current Password" placeholder="Username" ng-model="vm.currentpassword" required><br></br>
+
+      <label class="lbl_popup"><b>New Password</b></label>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp 
+      <input type="password" placeholder="Enter New Password" placeholder="Password" ng-model="vm.newpassword" required><br></br>
+      <label class="lbl_popup" style="position:relative; top:10px;"><b>Repeat Password</b></label>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp 
+      <input type="password" placeholder="Repeat New Password" placeholder="Password" ng-model="vm.repeatpassword" required><br></br>
+      <!-- <label class="lbl_popup"><b>E-Mail</b></label>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
+      <input type="email" placeholder="Enter E-Mail" placeholder="email" ng-model="vm.eMail" required> -->
+      <div ng-if="vm.error" class="error_rgstr" role="alert">
+  {{ vm.error }}
+</div>        <br></br>
+      
+      
+   
+    </div>
+
+    <div class="container_login" style="background-color:#f1f1f1">
+      <button type="submit" class="rgstr_btn">Submit</button>
+      <!-- <button type="button" onclick="document.getElementById('id01').style.display='none'" class="cancelbtn">Cancel</button> -->
+      <!-- <span class="psw"><a href="#">Forgot password?</a></span> -->
+    </div>
+  </form>
+</div>
+
+<div id="mydiv" ng-show="loading">    
+    <img src="/images/ajax-loader.gif" class="ajax-loader"/> 
 </div>

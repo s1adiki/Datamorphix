@@ -1,41 +1,186 @@
-<h1>Building a BOT</h1>
-<div  class="alert alert-success" role="alert">
-  <p>{{ 'Successfully Submitted...We will understand your bussiness!!!' }}</p>
+<html>
+<head>
+</head>
+<body onload="trigger()">
+</br></br><div id="test_section" ng-show="test_section">
+<div class="module_btn" ><div style="padding-left:18em ">
+<!-- <button id="get_site_info" type="submit" class="module_btn" ng-click="vm.get_site_info()" style="background-color:#458B00;width:160px;">Get Site Info</button>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp  -->
+<button id="create_bot" type="submit" class="module_btn"ng-click="vm.modifyBot()" style="background-color:#458B00;width:160px;">Modify Bot</button> &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp 
+<button id="test_nav_modify" type="submit" class="module_btn" ng-click="vm.infoBot()" style="background-color:#e9970f;width:160px;">Test</button>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp 
+<button id="deploy_nav_test" type="submit" class="module_btn"ng-click="vm.deploy()" style="background-color:#458B00;width:160px;">Deploy</button>   
+</div></div></br>
+
+<div id="load_script" ng-show="icon"></div>
+
+<div style="position:absolute;border: 1px solid #ccc;top:300px;height:20%;width:35%;background-color:#202e3b;border-radius:5px;text-align:center"></br>
+<div  class="" style="left:12%;bottom:450px;"  role="alert">
+       <p>{{ 'You can test your BOT here =======>>' }}</p>
+    </div></br></br>
+
+<div   style="left:10%;bottom:330px;"  >
+       <p> Successfully Saved...If you want to know how to Deploy </br>         your bot on your site <a href="" style="color:#df691a" ng-click="vm.deploy()">Click here</a></p>
+    </div>
+  </div>
+<div ng-init="vm.test()"><iframe id="myFrame" class="iframe_test" ></iframe></div></div>
+
+
+
+
+
+
+<div id="modify_div_section" ng-show="modify_div_section">
+
+<div class="module_btn" id="nav_div" ><div style="padding-left:18em ">
+<!-- <button id="get_site_info" type="submit" class="module_btn" ng-click="vm.get_site_info()" style="background-color:#458B00;width:160px;">Get Site Info</button>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp  -->
+<button id="create_bot_modify" type="submit" class="module_btn"ng-click="vm.modifyBot()" style="background-color:#e9970f;width:160px;">Modify Bot</button> &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp 
+<button id="test_nav" type="submit" class="module_btn" ng-click="vm.infoBot()" style="background-color:#458B00;width:160px;">Test</button>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp 
+<button id="deploy_nav" type="submit" class="module_btn"ng-click="vm.deploy()" style="background-color:#458B00;width:160px;">Deploy</button>   
+</div></div>
+</br></br>
+<div class="col-md-6 "  style="width:210px;margin-left:-190px;left:85px;">
+<!--   <div class="dropdown">
+  <button class="dropbtn module_btn" style="width: 200px;"><span class="selected">Information Bot</span> <span class="caret"></span></button>
+  <div class="dropdown-content">
+    <a href="" ng-click="vm.personal()">Personal Banking</a>
+    <a href="#">Link 2</a>
+    <a href="#">Link 3</a>
+  </div>
+</div> -->
+<!-- <div class="input-group-btn select" style="width: 200px;" id="scrape_info_select1">
+    <button type="button" class="btn btn-default dropdown-toggle" style="border-radius:5px;" data-toggle="dropdown" aria-expanded="false"><span class="selected">Information BOT</span> <span class="fa fa-caret-right" style="position:absolute;top:10px; right:20px;"></span></button>
+    <ul class="dropdown-menu option" style="width: 210px; left:177px;top:8px; " role="menu">
+        <li id="1" ng-click="vm.personal_modify()"><a href="">Personal Banking</a></li>
+        <li id="2"><a href="">--Coming--</a></li>
+    </ul>
+</div></br></br>
+<div class="input-group-btn select" style="width: 200px;" id="scrape_info_select2">
+    <button type="button" class="btn btn-default dropdown-toggle" style="border-radius:5px;" data-toggle="dropdown" aria-expanded="false"><span class="selected">Service BOT</span> <span class="fa fa-caret-right" style="position:absolute;top:10px; right:20px;"></span></button>
+    <ul class="dropdown-menu option" style="width: 210px; left:177px;top:8px; " role="menu">
+        <li id="1" ng-click="vm.support_modify()"><a href="">Support Service</a></li>
+        <li id="2"><a href="">--Coming--</a></li>
+    </ul>
+</div></br></br>
+<div class="input-group-btn select" style="width: 200px;" id="scrape_info_select3">
+    <button type="button" class="btn btn-default dropdown-toggle" style="border-radius:5px;" data-toggle="dropdown" aria-expanded="false"><span class="selected">Help BOT</span> <span class="fa fa-caret-right" style="position:absolute;top:10px; right:20px;"></span></button>
+    <ul class="dropdown-menu option" style="width: 210px; left:177px;top:8px; " role="menu">
+        <li id="1" ><a href="">--Coming--</a></li>
+        <li id="2"><a href="">--Coming--</a></li>
+    </ul>
+</div></br></br> -->
+<!-- <div class="dropdown">
+  <button class="dropbtn module_btn" style="width: 200px;">Service BOT  &nbsp&nbsp&nbsp &nbsp&nbsp  ></button>
+  <div class="dropdown-content">
+ 
+  </div>
+</div> -->
+<!-- <div class="dropdown">
+  <button class="dropbtn module_btn" style="width: 200px;">Help BOT  &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp &nbsp   ></button>
+  <div class="dropdown-content">
+   
+  </div>
+</div> -->
+<!-- <button type="submit" class="module_btn" ng-click="vm.infoBot()" style="width:160px;">Information BOT</button></br></br>
+<button type="submit" class="module_btn"ng-click="vm.supportBot()" style="width:160px;">Service BOT</button>  </br></br>
+<button type="submit" class="module_btn"ng-click="vm.supportBot()" style="width:160px;">Help BOT</button> -->
+</div>
+<div class="animate" ng-show="popup_modify" style="position:relative;left:92%;"><!-- <button class="login_btn w3-button w3-green w3-round-large" title="This is to close the current module 
+    This is to close the current module 
+    This is to close the current module" ng-click="save()">Close</button> --><button title="This is to save the current module and exit" class="login_btn w3-button w3-green w3-round-large" ng-click="save()">Save & Exit</button></div>
+
+<div class="animate" ng-show="popup_service" style="position:relative;left:92%;"><!-- <button class="login_btn w3-button w3-green w3-round-large" title="This is to close the current module 
+    This is to close the current module 
+    This is to close the current module" ng-click="save()">Close</button> --><button title="This is to save the current module and exit" class="login_btn w3-button w3-green w3-round-large" ng-click="save()">Save & Exit</button></div>
 </div>
 
-	</br></br>
-	<h2> Bot Type </h2></br>
+ <div  ng-show="popup_modify" ><div style="left: 310px;position: relative;color:#e9970f;">Upon completion.... please copy the data from Webchat settings and click Save&Exit.</div><iframe id="myFrame" class="iframe_popup" src="https://dashboard.motion.ai/bots/37205?inputEmail=sreenivas@intellisofttech.com&inputPassword=srini123"></iframe></div>
 
-	<button type="submit" class="btn btn_normal" ng-click="vm.infoBot()">Information BOTS</button></br></br></br>
-	<button type="submit" class="btn btn_normal"ng-click="vm.supportBot()">Support BOTS</button>  
-	<!-- <table>
-		<tr>
-			<td><h2> Bot Type </h2></td>
-			<th> Bot Services</th> 
-		</tr> 
-		<tr>
-			<td class="btn btn_normal">Information BOTS</td>
-			<td><label for="url" class="btn btn-success">Personal Banking</label></td> 
-		</tr>
-		<tr><tb class="">     </td></tr>
-		<tr>
-			<td class="btn btn_normal">Support BOTS</td>
-			<td><label for="url" class="btn btn-success">Track Tickets</label></td> 
-		</tr>
+<div  ng-show="popup_service" ><div style="left: 310px;position: relative;color:#e9970f;">Upon completion.... please copy the data from Webchat settings and click Save&Exit.</div><iframe id="myFrame" class="iframe_popup" src="https://dashboard.motion.ai/bots/69904?inputEmail=sreenivas@intellisofttech.com&inputPassword=srini123"></iframe></div>
 
-
-	</table> -->
+<div id="module_script_modify" class="modal1 ">
   
+  <form class="modal-content1 animate" ng-click='validate()' ng-submit="vm.submit_script_modify()">
+    <div class="imgcontainer">
+      <span  onclick="document.getElementById('module_script_modify').style.display='none'" ng-click="vm.clear()" class="close" title="Close"> &times;</span>
+      
+    </div>
 
+    <div class="container">
+    	<label style="position:relative; top:15px;" class="lbl_popup"><b>Javascript</b></label>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
+     <input style="position:relative; top:15px;" type="text" placeholder="Copy & Paste Javascript" ng-model="vm.javascript" required>&nbsp&nbsp <img style="position: relative;top:12px;" title="Copy & Paste the java Script code 
+from webchat tab from Top-Right Tab 
+in the module" style="position:relative;" src="/images/tooltip.png"><br></br>
+              <br></br>
+      
+      
+   
+    </div>
 
+    <div class="container_login" style="background-color:#f1f1f1">
+      <button type="submit" style="left:150px" class="rgstr_btn">Submit Javascript</button>
+      <!-- <button type="button" onclick="document.getElementById('id01').style.display='none'" class="cancelbtn">Cancel</button> -->
+      <!-- <span class="psw"><a href="#">Forgot password?</a></span> -->
+    </div>
+  </form>
+</div>
 
-
-  <!-- <div class="form-group">
-    <label for="url">Information BOTS</label>
-    <button type="submit" class="btn btn-success">Scrape</button>
-  </div>
-  <div class="form-group">
-    <label for="url">Support BOTS</label>
-    <button type="submit" class="btn btn-success">Scrape</button>
-  </div> -->
+<div id="module_script_modify" class="modal1 ">
   
+  <form class="modal-content1 animate" ng-click='validate()' ng-submit="vm.submit_script_modify()">
+    <div class="imgcontainer">
+      <span  onclick="document.getElementById('module_script_modify').style.display='none'" ng-click="vm.clear()" class="close" title="Close"> &times;</span>
+      
+    </div>
+
+    <div >
+    	<label style="position:relative; top:15px;" class="lbl_popup"><b>Javascript</b></label>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
+     <input style="position:relative; top:15px;" type="text" placeholder="Copy & Paste Javascript" ng-model="vm.javascript" required>&nbsp&nbsp <img style="position: relative;top:12px;" title="Copy & Paste the java Script code 
+from webchat tab from Top-Right Tab 
+in the module" style="position:relative;" src="/images/tooltip.png"><br></br>
+              <br></br>
+      
+      
+   
+    </div>
+
+    <div class="container_login" style="background-color:#f1f1f1">
+      <button type="submit" style="left:150px" class="rgstr_btn">Submit Javascript</button>
+      <!-- <button type="button" onclick="document.getElementById('id01').style.display='none'" class="cancelbtn">Cancel</button> -->
+      <!-- <span class="psw"><a href="#">Forgot password?</a></span> -->
+    </div>
+  </form>
+</div>
+
+
+<div id="deploy_modify_test" ng-show="deploy_modify_test">
+
+<div class="module_btn" ><div style="padding-left:18em ">
+<!-- <button id="get_site_info" type="submit" class="module_btn" ng-click="vm.get_site_info()" style="background-color:#458B00;width:160px;">Get Site Info</button>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp  -->
+<button id="create_bot" type="submit" class="module_btn"ng-click="vm.modifyBot()" style="background-color:#458B00;width:160px;">Modify Bot</button> &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp 
+<button id="test_nav" type="submit" class="module_btn" ng-click="vm.infoBot()" style="background-color:#458B00;width:160px;">Test</button>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp 
+<button id="deploy_nav" type="submit" class="module_btn"ng-click="vm.deploy_test()" style="background-color:#e9970f;width:160px;">Deploy</button>   
+</div></div>
+</br></br>
+
+
+
+<h2>
+Place the below Java-Script data after the <img src="/images/body.png"> In your Web-Site main page. 
+</h2>
+</br>
+</br></br>
+</br>
+<textarea rows="5" type="text"  name="message" ng-readonly=true required="required" ng-init="vm.test()" ng-model="vm.MesSage" maxlength="1000" style="
+    border-radius: 5px;
+    width: 600px;"></textarea>
+
+</div>
+
+
+
+</body>
+</html>
+
+
+<div id="mydiv" ng-show="loading">    
+    <img src="/images/ajax-loader.gif" class="ajax-loader"/> 
+</div>

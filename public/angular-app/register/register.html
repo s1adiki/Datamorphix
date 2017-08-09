@@ -1,27 +1,203 @@
-<h1>Register</h1>
+<h1>Register</h1></br></br>
 <div ng-if="vm.message" class="alert alert-success" role="alert">
   <p>{{ vm.message }}</p>
 </div>
 <div ng-if="vm.error" class="alert alert-danger" role="alert">
   {{ vm.error }}
 </div>
-<form ng-hide="vm.message" name="register" ng-submit="vm.register()">
+<form ng-hide="vm.message"  ng-submit="vm.register()" name="register">
+ 
+
+  <div class="form-group">
+    <label for="username" class='lbl_rgstr'>Username</label>
+    <input type="text" class="form-control" id="username" placeholder="Username" ng-model="vm.username" autocapitalize="none" required>
+  </div>
+  <div class="form-group">
+    <label for="password" class='lbl_rgstr'>Password</label>
+    <input type="password" class="form-control" id="password" placeholder="Password" ng-model="vm.password" autocapitalize="none" required>
+  </div>
+  <div class="form-group" >
+    <label for="password-repeat" class='lbl_rgstr'>Confirm Password</label>
+    <input type="password" class="form-control" id="password-repeat" placeholder="Confirm Password" ng-model="vm.passwordRepeat" autocapitalize="none" required>
+  </div>
+  <div class="form-group">
+    <label for="email" class='lbl_rgstr'>E-Mail</label>
+    <input type="email" class="form-control" id="email" placeholder="E-Mail" ng-model="vm.eMail" autocapitalize="none" required>
+  </div>
+  <div class="form-group">
+    <label for="number" class='lbl_rgstr'>Mobile Phone  </label>
+    <input type="text" class="form-control" id="contact" placeholder="Contact Number" ng-model="vm.contact" autocapitalize="none" required>
+  </div>
+    <div class="form-group">
+    <label for="Organisation name" class='lbl_rgstr'>Organisation Name</label>
+    <input type="text" class="form-control" id="org_username" placeholder="Organisation Name" ng-model="vm.org_username" autocapitalize="none" required>
+  </div>
+<!--   <div class="dropdown">
+    <button class="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown">Dropdown Example
+    <span class="caret"></span></button>
+    <ul class="dropdown-menu">
+      <li><a href="#">HTML</a></li>
+      <li><a href="#">CSS</a></li>
+      <li><a href="#">JavaScript</a></li>
+    </ul>
+  </div> --></br></br>
+  <div class="form-group">
+    <label for="Type Of Bot" class='lbl_rgstr' style="position:absolute;">Type Of Bot Required</label>
+  <!-- <div class="dropdown">
+  <button class="dropbtn module_btn" style="width: 200px;">Bot Type  &nbsp&nbsp&nbsp &nbsp&nbsp></a></button>
+  <div class="dropdown-content">
+    <a href="" ng-click="vm.personal()">Information Bot</a>
+    <a href="">Service BOT</a>
+    <a href="">Help BOT</a>
+  </div>
+</div> -->
+<div style="left:200px;">
+      <label class="checkbox" style="font-size:16px;position: relative; left: 25%;"><input type="checkbox" ng-model="vm.info_chk" ng-change="vm.bot_type_info(vm.info_chk)">Information BOT</label></br>
+    
+     <label class="checkbox" style="font-size:16px; position: relative; left: 25%;"><input type="checkbox" ng-model="vm.service_chk" ng-change="vm.bot_type_service(vm.service_chk)">Service BOT</label> </br>
+     <label class="checkbox" style="font-size:16px; position: relative; left: 25%;"><input type="checkbox" ng-model="vm.help_chk" ng-change="vm.bot_type_help(vm.help_chk)">Custom BOT</label>
+</div></br>
+<div><label for="Type Of Bot" class='lbl_rgstr' style="position:absolute;">Plan</label>
+       <div class="input-group-btn select" id="reg_plan_select1">   
+ <button type="button" class="btn btn-default dropdown-toggle " style="width: 350px;left: 205px;" data-toggle="dropdown" aria-expanded="false"><span class="selected">Select Type</span> <span class="caret"></span></button>
+    <ul class="dropdown-menu option" style="width: 347px;left: 205px;" role="menu">
+        <li id="1"><a ng-click="vm.change(reg_plan_select1)" href="">Plan - 1</a></li>
+        <li id="2"><a ng-click="vm.change(reg_plan_select1)" href="">Plan - 2</a></li>
+        <li id="3"><a ng-click="vm.change(reg_plan_select1)" href="">Plan - 3</a></li>
+        <!-- <li id="4"><a ng-click="vm.change(contact_select1)" href="">E-Commerce</a></li>
+        <li id="11"><a ng-click="vm.change(contact_select1)" href="">Education</a></li>           
+        <li id="5"><a ng-click="vm.change(contact_select1)" href="">Finance</a></li>
+        <li id="6"><a ng-click="vm.change(contact_select1)" href="">Food & Beverages</a></li>
+        <li id="7"><a ng-click="vm.change(contact_select1)" href="">Health Care</a></li>
+        <li id="8"><a ng-click="vm.change(contact_select1)" href="">Hospitality</a></li>
+        <li id="9"><a ng-click="vm.change(contact_select1)" href="">Telecommunications</a></li>
+        <li id="10"><a ng-click="vm.change(contact_select1)" href="">Others</a></li> -->
+    </ul>
+  </div></div>
+<div ng-show="info_drpdwn" style="position:absolute">
+<!-- <label for="email" class='lbl_rgstr'>AVG Number of Customers per instance</label> -->
+  <!--   <div class="dropdown" style="position:absolute">
+  <button class="dropbtn module_btn" style="width: 400px;left: 500px;top: -190px;">AVG Number of Customers per instance</a></button>
+  <div class="dropdown-content" style="width: 400px;left: 500px;top: -120px;">
+    
+    <a href="" ng-click="vm.personal()">Information Bot</a>
+    <a href="">Service BOT</a>
+    <a href="">Help BOT</a>
+    
+
+  </div>
+</div> -->
+<div class="input-group-btn select" style="width: 400px;left: 500px;top: -190px;" id="register_select1">
+    <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-expanded="false"><span class="selected">Select Plan</span> <span class="caret"></span></button>
+    <ul class="dropdown-menu option" style="width: 400px;" role="menu">
+        <li id="1"><a ng-click="vm.change(register_select1)" href="">Plan - 1</a></li>
+        <li id="2"><a ng-click="vm.change(register_select1)" href="">Plan - 2</a></li>
+        <li id="3"><a ng-click="vm.change(register_select1)" href="">Plan - 3</a></li>
+        <!-- <li id="3"><a ng-click="vm.change(register_select1)" href="">Greater than > 500</a></li> -->
+    </ul>
+</div>
+  </div>
+  <div ng-show="service_drpdwn" style="position:absolute" >
+<!-- <label for="email" class='lbl_rgstr'>AVG Number of Customers per instance</label> -->
   
-  <div class="form-group">
-    <label for="username">Username</label>
-    <input type="username" class="form-control" id="username" placeholder="Username" ng-model="vm.username" autocapitalize="none">
+<div class="input-group-btn select" style="width: 400px;left: 500px;top: -120px;" id="register_select2">
+    <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-expanded="false"><span class="selected">AVG Number of Service requests per day</span> <span class="caret"></span></button>
+    <ul class="dropdown-menu option" style="width: 400px;" role="menu">
+        <li id="1"><a ng-click="vm.change(register_select2)" href="">Less than    < 50</a></li>
+        <li id="2"><a ng-click="vm.change(register_select2)" href="">Between   50 - 100</a></li>
+        <li id="3"><a ng-click="vm.change(register_select2)" href="">Between  100 - 200</a></li>
+        <li id="4"><a ng-click="vm.change(register_select2)" href="">Greater than > 200</a></li>
+    </ul>
+</div>
+            
+
+   <!--  <div class="dropdown" >
+  <button class="dropbtn module_btn" style="width: 400px;left: 500px;top: -120px;">AVG Number of Customers per instance</a></button>
+  <div class="dropdown-content" style="width: 400px;left: 500px;top: -50px;">
+    <a href="" ng-click="vm.personal()">Information Bot</a>
+    <a href="">Service BOT</a>
+    <a href="">Help BOT</a>
   </div>
-  <div class="form-group">
-    <label for="password">Password</label>
-    <input type="password" class="form-control" id="password" placeholder="Password" ng-model="vm.password" autocapitalize="none">
+</div> -->
   </div>
-  <div class="form-group">
-    <label for="password-repeat">Repeat Password</label>
-    <input type="password" class="form-control" id="password-repeat" placeholder="Password" ng-model="vm.passwordRepeat" autocapitalize="none">
+  <div ng-show="help_drpdwn" style="position:absolute" >
+<!-- <label for="email" class='lbl_rgstr'>AVG Number of Customers per instance</label> -->
+<!--     <div class="dropdown" style="position:absolute" >
+  <button class="dropbtn module_btn" style="width: 400px;left: 500px;top: -50px;">AVG Number of Customers per instance</a></button>
+  <div class="dropdown-content" style="width: 400px;left: 500px;top: 20px;">
+    <a href="" ng-click="vm.personal()">Information Bot</a>
+    <a href="">Service BOT</a>
+    <a href="">Help BOT</a>
   </div>
-  <div class="form-group">
-    <label for="email">E-Mail</label>
-    <input type="email" class="form-control" id="email" placeholder="E-Mail" ng-model="vm.eMail" autocapitalize="none">
+</div> -->
+<div class="input-group-btn select"  style="width: 400px;left: 500px;top: -50px;" id="register_select3">
+    <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-expanded="false"><span class="selected">AVG Number of Visitors per day</span> <span class="caret"></span></button>
+    <ul class="dropdown-menu option" style="width: 400px;" role="menu">
+        <li id="1"><a ng-click="vm.change(register_select3)" href="">Less than    < 100</a></li>
+        <li id="2"><a ng-click="vm.change(register_select3)" href="">Between  100 - 300</a></li>
+        <li id="3"><a ng-click="vm.change(register_select3)" href="">Between  300 - 500</a></li>
+        <li id="4"><a ng-click="vm.change(register_select3)" href="">Greater than > 500</a></li>
+    </ul>
+</div>
   </div>
-  <button type="submit" class="btn btn-success">Register</button>
+</div></br>
+  <button type="submit" class="rgstr_btn">Subscribe</button>
+ <!--  <label for="inputPhone" class="col-sm-3 control-label">Phone :</label>
+  <div class="col-sm-9">
+  <input type="number" 
+                   class="form-control" 
+                   ng-minlength="10" 
+                   ng-maxlength="10"  
+                   id="inputPhone" 
+                   name="phone" 
+                   placeholder="Phone" 
+                   ng-model="user.phone"
+                   ng-required="true">
+            <span class="help-block" 
+                  ng-show="registration.phone.$error.required || 
+                           registration.phone.$error.number">
+                           Valid phone number is required
+            </span>
+            <span class="help-block" 
+                  ng-show="((registration.phone.$error.minlength ||
+                           registration.phone.$error.maxlength) && 
+                           registration.phone.$dirty) ">
+                           phone number should be 10 digits
+            </span>
+          </div> -->
 </form>
+<div id="mydiv" ng-show="loading">    
+    <img src="/images/ajax-loader.gif" class="ajax-loader"/> 
+</div>
+</br>
+
+<!-- <div id="id_register" class="modal1 " style="z-index:2;">
+  
+  <form class="modal-content1 animate">
+    <div class="imgcontainer">
+      <img src="/images/tick.jpeg">
+      <span onclick="document.getElementById('id_register').style.display='none'" ng-click="vm.clear()" class="close" title="Close">&times;</span>
+      
+    </div></br></br></br>
+
+    <div  class="w3-button w3-green w3-round-xlarge success_btn_popup" style="width: 400px;"  role="alert">
+       <p>Successfully Subscribed......Now You Can Login </br>One Of Our Consultant Will Be Back To You.</p>
+    </div></br></br></br>
+
+
+  </form>
+</div> -->
+
+
+
+<!-- <form name="myForm" ng-submit="onSubmit()"></br>     <input type="number" ng-
+model="mobile_number" name="mobile_number" ng-pattern="/^[7-9][0-9]{9}$/"
+required>     <span ng-show="myForm.mobile_number.$error.pattern">Please enter
+valid number!</span>     <input type="submit" value="submit"/> </form>
+ -->
+
+
+<!--  <div id="plan" style="position: absolute;padding-left: 590px;bottom: 490px;">
+
+<img src="/images/Plan.png">
+ </div> -->

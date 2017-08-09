@@ -1,30 +1,54 @@
 <!DOCTYPE html>
-<html ng-app="meanhotel">
+<html ng-app="meanchat">
 <head>
   <title>Intellisoft Bots</title>
   <!-- <meta name="viewport" content="width=device-width, initial-scale=1"> -->
   <link href="css/bootstrap.min.css" rel="stylesheet"/>
+  <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
   <!-- <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"> -->
   <link href="css/custom.css" rel="stylesheet"/>
+  <meta charset="utf-8">
+  <!-- <meta name="viewport" content="width=device-width, initial-scale=1"> -->
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
+
+
+
+  
+
 </head>
-<body>
-
+<!-- <body style="background:url(/images/bg.jpg);background-size: 100% 90%;background-repeat: no-repeat;"> -->
+<body >
+<!-- <div style="box-shadow: 2px 2px;">
+<link href="https://api.motion.ai/sdk/webchat.css" rel="stylesheet" type="text/css">background: linear-gradient(to right, #1a5a72, #27a8cb);
+<script src="https://api.motion.ai/sdk/webchat.js"></script>
+<script>
+   motionAI_Init('37205?color=62a8ea&sendBtn=SEND&inputBox=Type%20something...&token=779fbe4ce08a5f290b4f1f45b3d49884',true,400,470,'https://www.yoyojobs.com/wp-content/uploads/2017/03/sbi-po-hall-ticket.gif');
+   /* You may also invoke motionAI_Open() to manually open the modal. */
+</script>
+</div> -->
+<!-- <section style="background:url(/images/waves.png);background-position: top;background-size: contain;background-repeat: no-repeat;">
+  <div style="background: linear-gradient(to right, #1a5a72, #27a8cb);"> -->
   <mh-navigation></mh-navigation>
-  <div class="container">
+  <div class="container" >
     <div ng-view></div>
-  </div>
 
-  <footer class="footer">
+  </div>
+<div ng-bind-html="divHtmlVar"></div><!-- </div></section> -->
+  <footer class="footer" style="background-color:#1f7088">
     <div class="container">
       <p class="text-muted text-center">
         <a href="http://www.intellisofttech.com" target="_blank"><img src="/images/intel.png" height="26" width="100"  alt="Intellisoft Technologies"/></a>
       </p>
 
-      <p class="text-muted text-center">
+      <p class=" text-center" >
         <small>Copyright ©2017 IntelliSoft Technologies, Inc  All rights reserved.</small>
       </p>
     </div>
   </footer>
+
+
+
+
 
   <script src="jquery/jquery-2.1.4.min.js"></script>
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
@@ -34,7 +58,10 @@
   <script src="node_modules/angular-jwt/dist/angular-jwt.js"></script>
   <script src="angular-app/app.js"></script>
   
-  <script src="angular-app/Bot-store/botstore.js"></script>
+
+
+  
+  <script src="angular-app/Bot-Store/botstore.js"></script>
   
   
   <script src="angular-app/UserDataFactory/user_data_factory.js"></script>
@@ -42,10 +69,27 @@
 
   <script src="angular-app/register/register-controller.js"></script>
   <script src="angular-app/scrape/scrapController.js"></script>
+  <script src="angular-app/scrape/scrape_url.js"></script>
   <script src="angular-app/navigation-directive/navigation-directive.js"></script>
   <script src="angular-app/login/login-controller.js"></script>
+  
+  <script src="angular-app/main/main.js"></script>
+  <script src="angular-app/main_loggedin/main_loggedin.js"></script>
+  <script src="angular-app/dashboard/dashboard.js"></script>
+  <script src="angular-app/login/userLoginController.js"></script>
   <script src="angular-app/profile/profileController.js"></script>
+  <script src="angular-app/contact_us/contact_us.js"></script>
+  <script src="angular-app/final_store/final_store.js"></script>
+  <script src="angular-app/forget_password/forget_password_controller.js"></script>
   <script src="angular-app/auth/auth-factory.js"></script>
   <script src="angular-app/auth/auth-interceptor.js"></script>
+ <!--  <link href="https://api.motion.ai/sdk/webchat.css" rel="stylesheet" type="text/css">
+<script src="https://api.motion.ai/sdk/webchat.js"></script> -->
+
+
+
+
+  
+
 </body>
 </html>

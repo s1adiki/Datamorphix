@@ -1,4 +1,4 @@
-angular.module('meanhotel').factory('UserDataFactory', UserDataFactory);
+angular.module('meanchat').factory('UserDataFactory', UserDataFactory);
 
 function UserDataFactory($http) {
   return {

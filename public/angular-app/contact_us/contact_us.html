@@ -1,0 +1,168 @@
+
+
+<div >
+
+<div><h1>Contact info</h1></div>
+<div ng-if="vm.message" class="alert alert-success" role="alert">
+  <p>{{ vm.message }}</p>
+</div>
+<div ng-if="vm.error" class="alert alert-danger" role="alert">
+  {{ vm.error }}
+</div>
+  <div class="col-md-6 ">
+                    <dl class="dl-horizontal custom" style="color: #fff; margin: 20px">
+</br></br>
+                        <dt>Phone</dt>
+                        <dd>972 756 1212 extn 112</dd></br></br>
+                        <dt>Email</dt>
+                        <dd>datamorphix@intellisofttech.com</dd></br></br>
+                        <dt>Office Address</dt>
+                        <dd>Intellisoft Technologies <br> 1320 Greenway Drive <br> Irving texas, USA <br> 75038</dd>
+                    </dl>
+                </div>
+
+    <div class="col-md-6 " style="padding: 25px; color: #fff; ">
+                      <form ng-click='validate()' ng-submit="vm.contact_intellisoft()">
+    
+
+    <div class="dl-horizontal custom" style="width:900px;">
+
+      <label class='lbl_rgstr' ><b>Name</b></label></br>
+      <input type="text" placeholder="Enter Username" placeholder="Username" ng-model="vm.usrnme" required></br>
+
+      
+      
+      <label class='lbl_rgstr' ><b>E-Mail</b></label></br>
+      <input type="email" placeholder="Enter E-Mail" placeholder="email" ng-model="vm.eMaiLcontact" required></br>
+
+    <label for="number" class='lbl_rgstr'>Mobile Phone  </label></br>
+    <input type="text"  id="contact" placeholder="Contact Number" ng-model="vm.contact_cn" autocapitalize="none" required></br>
+ 
+       <div class="form-group">
+    <label for="Type Of Bot" class='lbl_rgstr' style="position:absolute;">Type Of Bot Required</label>
+  <!-- <div class="dropdown">
+  <button class="dropbtn module_btn" style="width: 200px;">Bot Type  &nbsp&nbsp&nbsp &nbsp&nbsp></a></button>
+  <div class="dropdown-content">
+    <a href="" ng-click="vm.personal()">Information Bot</a>
+    <a href="">Service BOT</a>
+    <a href="">Help BOT</a>
+  </div>
+</div> -->
+<div style="left:200px;">
+      <label class="checkbox" style="font-size:16px;position: relative; left: 35%;"><input type="checkbox" ng-model="vm.info_chk" ng-change="vm.bot_type_info(vm.info_chk)">Information BOT</label></br>
+    
+     <label class="checkbox" style="font-size:16px; position: relative; left: 35%;"><input type="checkbox" ng-model="vm.service_chk" ng-change="vm.bot_type_service(vm.service_chk)">Service BOT</label> </br>
+     <label class="checkbox" style="font-size:16px; position: relative; left: 35%;"><input type="checkbox" ng-model="vm.help_chk" ng-change="vm.bot_type_help(vm.help_chk)">Help BOT</label>
+</div>
+
+
+
+</div>
+       <label for="number" class='lbl_rgstr'>Organization  </label></br>
+       <div class="input-group-btn select" id="contact_select1">   
+ <button type="button" class="btn btn-default dropdown-toggle " style="width:300px;border-radius:5px;" data-toggle="dropdown" aria-expanded="false"><span class="selected">Select Type</span> <span class="caret"></span></button>
+    <ul class="dropdown-menu option" style="width: 300px;" role="menu">
+        <li id="1"><a ng-click="vm.change(contact_select1)" href="">Agriculture</a></li>
+        <li id="2"><a ng-click="vm.change(contact_select1)" href="">Banking</a></li>
+        <li id="3"><a ng-click="vm.change(contact_select1)" href="">Construction</a></li>
+        <li id="4"><a ng-click="vm.change(contact_select1)" href="">E-Commerce</a></li>
+        <li id="11"><a ng-click="vm.change(contact_select1)" href="">Education</a></li>           
+        <li id="5"><a ng-click="vm.change(contact_select1)" href="">Finance</a></li>
+        <li id="6"><a ng-click="vm.change(contact_select1)" href="">Food & Beverages</a></li>
+        <li id="7"><a ng-click="vm.change(contact_select1)" href="">Health Care</a></li>
+        <li id="8"><a ng-click="vm.change(contact_select1)" href="">Hospitality</a></li>
+        <li id="9"><a ng-click="vm.change(contact_select1)" href="">Telecommunications</a></li>
+        <li id="10"><a ng-click="vm.change(contact_select1)" href="">Others</a></li>
+    </ul>
+  </div>
+     </br> <label  class='lbl_rgstr'><b>Message</b></label></br>
+      <textarea rows="5" type="text"  name="message" placeholder="Enter Your Message" required="required" ng-model="vm.MesSage" maxlength="1000" style="  border-radius: 5px;width: 400px;"></textarea>
+
+    </div>
+
+    <div  >
+      <button type="submit" class="send_btn">Send</button><div id="contact_sent" style="left: 40%;position: absolute;bottom: 7%;color:#e9970f;"></div>
+
+    </div>
+  </form>
+
+                </div>
+
+
+</div>
+
+</br>
+<div id="map" >   </div></br>
+
+
+
+<script>
+      function initMap() {
+        var uluru = {lat: 32.889111, lng: -96.9699883};
+        var map = new google.maps.Map(document.getElementById('map'), {
+          zoom: 16,
+          
+          
+          center: uluru
+        });
+       
+
+
+
+        
+        //var infowindow = new google.maps.InfoWindow();
+        var service = new google.maps.places.PlacesService(map);
+
+        service.getDetails({
+          placeId: 'ChIJGeQCltYpTIYROYskqYh26CY'
+        }, function(place, status) {
+          if (status === google.maps.places.PlacesServiceStatus.OK) {
+            var marker = new google.maps.Marker({
+              map: map,
+              position: place.geometry.location
+            });
+
+             var infowindow = new google.maps.InfoWindow({
+          content: '<div style="color:black;"><b><strong>' + place.name + '</strong><br>' +
+                
+                place.formatted_address + '</b></div>',
+          position: place.geometry.location
+        });
+             //infowindow.open(map);
+
+            google.maps.event.addListener(marker, 'click', function() {
+              infowindow.setContent('<div style="color:black;"><b><strong>' + place.name + '</strong><br>' +
+                
+                place.formatted_address + '</b></div>');
+              infowindow.open(map, this);
+            });
+          }
+        });
+
+        /*var marker = new google.maps.Marker({
+          position: uluru,
+          map: map
+        });*/
+      }
+    </script>
+    <script async defer
+
+    src="https://maps.googleapis.com/maps/api/js?key=AIzaSyA82MZ4nZG6rZSojShIX1pRTdTM3K8pd5I&libraries=places&callback=initMap&mapclient=embed">
+    </script>
+
+   
+
+<!-- <div style="position: absolute; left: 0px; top: 100px;"> -->
+    <div style="position: absolute;background-color: white; width:340px; color:black; margin: 20px;left:11.5%; bottom:26.5%;  box-shadow: rgba(0, 0, 0, 0.3) 0px 1px 4px -1px; border-radius: 2px;"><div jstcache="0"><div jstcache="119" class="place-card place-card-large">  <div class="place-desc-large"> <div jstcache="36" class="place-name" style="font-size: 14px;width: 220px;font-weight: 500;text-overflow: ellipsis;" jsan="7.place-name">IntelliSoft Technologies, Inc.</div> <div jstcache="37" class="address" style="font-family: Roboto,Arial;font-size: 12px;width: 220px;color:#5b5b5b" jsan="7.address">1320 Greenway Dr #460, Irving, TX 75038</div> </div> <div jstcache="38" class="navigate"> <div jsaction="placeCard.directions" class="navigate"> <a target="_blank" jstcache="53" href="https://maps.google.com/maps?ll=33.033879,-92.781408&amp;z=7&amp;t=m&amp;hl=en-US&amp;gl=US&amp;mapclient=embed&amp;daddr=IntelliSoft%20Technologies%2C%20Inc.%201320%20Greenway%20Dr%20%23460%20Irving%2C%20TX%2075038@32.8890926,-96.9699883" class="navigate-link"> <div class="icon navigate-icon"></div><div title="Get directions to this location on Google Maps." style="position:absolute;padding-left: 240px;color:#3a84df;font-family: Roboto,Arial;top:1px;font-size: 12px;"><img src="/images/directions-icon.jpg"></br>  Directions</div>  </a> </div> </div> <div jstcache="39" class="navigate-separator"> </div>  
+
+
+    <div jstcache="41" class="review-box"> <div jstcache="42" class="review-number" jsan="7.review-number">2.0</div> <div jstcache="43"  class="icon rating-star rating-full-star" ></div><div jstcache="43" jsinstance="1" class="icon rating-star rating-full-star" jsan="7.icon,7.rating-star,7.rating-full-star"></div><div jstcache="43" jsinstance="2" class="icon rating-star rating-empty-star" jsan="7.icon,7.rating-star,7.rating-empty-star"></div><div jstcache="43" jsinstance="3" class="icon rating-star rating-empty-star" jsan="7.icon,7.rating-star,7.rating-empty-star"></div><div jstcache="43" jsinstance="*4" class="icon rating-star rating-empty-star" jsan="7.icon,7.rating-star,7.rating-empty-star"></div> <a target="_blank" jstcache="44" href="http://www.google.com/search?q=IntelliSoft+Technologies,+Inc.,+1320+Greenway+Dr+%23460,+Irving,+TX+75038&amp;ludocid=2803621097363508025#lrd=0x864c29d69602e419:0x26e87688a9248b39,1" jsaction="mouseup:placeCard.reviews" class="review-box-link" jsan="7.review-box-link,8.href,0.target,22.jsaction"style="color:#3a84df;font-family: Roboto,Arial;font-size: 12px;user-select: text;" >3 reviews </a> </div> 
+
+
+    <div jstcache="45" class="saved-from-source-link" style="display:none"></div> <div class="bottom-actions"> <div > <a style="color:#3a84df;font-family: Roboto,Arial;font-size: 12px;user-select: text;" target="_blank" jstcache="46" href="https://maps.google.com/maps?ll=32.889111,-96.9699883&amp;z=16&amp;t=m&amp;hl=en-US&amp;gl=US&amp;mapclient=embed&amp;cid=2803621097363508025" jsaction="mouseup:placeCard.largerMap">View larger map</a> </div> <a target="_blank" jstcache="47" class="send-to-device-button" style="display:none">Send to device</a> </div> </div></div></div>
+<!--  </div> -->
+
+<div id="mydiv_contact" ng-show="loading">    
+    <img src="/images/ajax-loader.gif" class="ajax-loader"/> 
+</div>
+

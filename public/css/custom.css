@@ -3,25 +3,26 @@
   html {
     position: relative;
     min-height: 100%;
+    
   }
   body {
     /* Margin bottom by footer height */
     margin-bottom: 90px;
   }
   body > .container {
-    padding-top: 120px;
+    padding-top: 90px;
   }
   .padded {
     padding-top: 30px
   }
   .footer {
     position: absolute;
-    bottom: 0;
+    bottom: 0px;
     width: 100%;
     /* Set the fixed height of the footer here */
-    height: 90px;
+    height: 101px;
     background-color: #f5f5f5;
-    padding-top: 20px;
+    
   }
   table, th, td {
     padding-top: 60px;
@@ -34,7 +35,7 @@
     background-color: rgba(158, 158, 158, 0.2);
   }
   .dropbtn {
-    background-color: #4CAF50;
+    
     color: white;
     padding: 16px;
     font-size: 16px;
@@ -51,7 +52,7 @@
     display: none;
     position: absolute;
     background-color: #f9f9f9;
-    min-width: 160px;
+    min-width: 200px;
     box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
     z-index: 1;
 }
@@ -70,8 +71,483 @@
 }
 
 .dropdown:hover .dropbtn {
-    background-color: #3e8e41;
+   
 }
 .al_1{
+  
+  bottom: 10%;
   padding: 2.5cm 3cm;
+}
+
+.error_lgn{
+  position: absolute;
+  /*bottom: 65px;*/
+  right: 41.9%;
+  background-color: #a13737;
+  width: 300px;
+}
+
+.error_rgstr{
+  position: absolute;
+  /*bottom: 65px;*/
+  right: 44.9%;
+  background-color: #a13737;
+  width: 250px;
+}
+
+
+input[type=text_register], input[type=password_register], input[type=email_register] {
+    overflow: auto; 
+    width: 50%;
+    padding: 5px 15px;
+    margin: 8px 0;
+    display: inline-block;
+    border: 1px solid #ccc;
+    background-size:  : border-box;
+        border-radius: 5px;
+}
+
+input[type=number_register] {
+    overflow: auto; 
+    width: 50%;
+    padding: 5px 15px;
+    margin: 8px 0;
+    display: inline-block;
+    border: 1px solid #ccc;
+    background-size:  : border-box;
+        border-radius: 5px;
+}
+
+
+input[type=text], input[type=password], input[type=email] {
+    overflow: auto; 
+    width: 30%;
+    padding: 5px 15px;
+    margin: 8px 0;
+    display: inline-block;
+    border: 1px solid #ccc;
+    background-size:  : border-box;
+        border-radius: 5px;
+}
+
+input[type=number] {
+    overflow: auto; 
+    width: 30%;
+    padding: 5px 15px;
+    margin: 8px 0;
+    display: inline-block;
+    border: 1px solid #ccc;
+    background-size:  : border-box;
+        border-radius: 5px;
+}
+
+.gm-style .gm-style-mtc div {
+    display: none;
+}
+
+
+input[type="checkbox"]{
+
+  margin :10px 5px 0;
+  line-height:normal;
+}
+
+/*input[type=text1] {
+    overflow: scroll; 
+    width: 30%;
+    height: 20%;
+    padding: 5px 15px;
+    margin: 8px 0;
+    display: inline-block;
+    border: 1px solid #ccc;
+    background-size:  : border-box;
+}*/
+
+
+/* Set a style for all buttons */
+button {
+    background-color: #4CAF50;
+    color: white;
+    padding: 14px 20px;
+    margin: 8px 0;
+    border: none;
+    cursor: pointer;
+    width: 100%;
+}
+
+button:hover {
+    opacity: 0.8;
+}
+
+.login_btn{
+  width: auto;
+  border-radius:5px;
+  padding: 10px 18px;
+  background-color: #458B00;
+}
+
+.btn-default {
+  color: #ffffff;
+    background-color: #134c5c;
+    border-color: transparent;
+}
+
+.rgstr_btn{
+  position: relative;
+  border-radius:5px;
+  left: 205px;
+  width: auto;
+  padding: 10px 18px;
+  background-color: #458B00;
+}
+
+.send_btn{
+  position: relative;
+  border-radius:5px;
+  width: auto;
+  padding: 10px 18px;
+  background-color: #458B00;
+}
+.module_btn{
+  position: relative;
+  
+  border-radius:5px;
+  width: auto;
+  padding: 10px 18px;
+  /*background-color: rgba(158, 158, 158, 0.2);*/
+  background-color: rgba(0, 0, 0, 0.26);
+}
+
+
+/* Extra styles for the cancel button */
+.cancelbtn {
+    width: auto;
+    padding: 10px 18px;
+    background-color: #f44336;
+}
+
+/* Center the image and position the close button */
+.imgcontainer {
+    text-align: center;
+    margin: 24px 0 12px 0;
+    position: relative;
+}
+
+img.avatar {
+    width: 40%;
+    border-radius: 50%;
+}
+
+.container {
+    padding: 12px;
+
+}
+
+span.psw {
+    position: absolute;
+    right: 15%;
+    bottom: 35%;
+
+}
+
+.success_btn_popup{
+  position: relative; 
+  left:100px;
+}
+
+
+.modal1 {
+
+    display: none; 
+    position: fixed; 
+    z-index: 2;  
+    left: 0;
+    top: 0;
+    width: 100%; 
+    height: 100%; 
+    overflow: auto; 
+    background-color: rgb(0,0,0); 
+    background-color: rgba(0,0,0,0.4); 
+    padding-top: 60px;
+}
+
+
+.modal-content1 {
+
+    border-radius: 25px;
+    background-color: #fefefe;
+    margin: 5% auto 15% auto;  /*5% from the top, 15% from the bottom and centered */
+    border: 1px solid #888;
+    width: 40%; 
+}
+
+
+.close {
+    position: relative;
+    right: 45px;
+    top: -5px;
+    color: #000;
+    font-size: 35px;
+    font-weight: bold;
+}
+.hover{
+  cursor: pointer;
+}
+.close:hover,
+.close:focus {
+    color: red;
+    cursor: pointer;
+}
+
+/* Add Zoom Animation */
+.container_login{
+  width: 80%;
+  position: relative;
+  left: 10%;
+}
+
+.lbl_popup{
+  color: #000000;
+  font-size: 15px;
+  width: 85px; 
+}
+.animate {
+    -webkit-animation: animatezoom 0.6s;
+    animation: animatezoom 0.6s
+}
+
+@-webkit-keyframes animatezoom {
+    from {-webkit-transform: scale(0)} 
+    to {-webkit-transform: scale(1)}
+}
+    
+@keyframes animatezoom {
+    from {transform: scale(0)} 
+    to {transform: scale(1)}
+}
+
+/* Change styles for span and cancel button on extra small screens */
+@media screen and (max-width: 300px) {
+    span.psw {
+       display: block;
+       float: none;
+    }
+    .cancelbtn {
+       width: 100%;
+    }
+}
+
+
+#mydiv {  
+
+    position:fixed;    
+    left:0;
+    background-color: rgb(0,0,0);
+    background-color: rgba(0,0,0,0.4); 
+    width:100%;
+    height:100%;
+    z-index:2;
+    
+    opacity: .8;
+ }
+
+.ajax-loader {
+    position: absolute;
+    left: 50%;
+    top: 40%;
+    margin-left: -32px; /* -1 * image width / 2 */
+    margin-top: -32px;  /* -1 * image height / 2 */
+    display: block;     
+}
+
+.iframe_popup {
+  position: relative;
+  width:95%;
+  height:600px;
+  left:100px;
+  border-width: 2px; 
+  
+
+}
+
+.tooltip {
+    position: relative;
+    display: inline-block;
+   
+}
+
+.tooltip .tooltiptext {
+    visibility: hidden;
+    width: 120px;
+    background-color: grey;
+    color: #fff;
+    text-align: center;
+    border-radius: 6px;
+    padding: 5px 0;
+
+    /* Position the tooltip */
+    position: absolute;
+    z-index: 1;
+}
+
+.tooltip:hover .tooltiptext {
+    visibility: visible;
+}
+
+ #map {
+        height: 400px;
+        width: 100%;
+       }
+
+.place-card-large {
+padding: 9px 4px 9px 11px;
+}
+
+.place-card ,.navigate-text, .star-entity-text{
+margin-top: 5px;
+    text-align: center;
+    
+    font-size: 12px;
+    max-width: 55px;
+    
+    white-space: nowrap;
+    text-overflow: ellipsis;
+  }
+
+ .rating-full-star {
+    background-position: 48px 165px;
+}
+
+.rating-star {
+    display: inline-block;
+    width: 11px;
+    height: 11px;
+    overflow: hidden;
+    overflow-x: hidden;
+    overflow-y: hidden;
+}
+
+.review-box {
+    padding-top: 5px;
+}
+
+.rating-empty-star {
+    background-position: 23px 165px;
+}
+
+  .review-number{
+
+  display: inline-block;
+    color: #e7711b;
+    font-weight: 500;
+    font-size: 14px;
+  }
+
+@media (-webkit-min-device-pixel-ratio: 1.2), (min-resolution: 1.2dppx), (min-resolution: 116dpi)
+
+.icon {
+    background-image: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABkAAAAWCAYAAAA1vze2AAAA40lEQVR42rXW3Q2DIBAH8I7Ae18cgREcgQ3qBtgJHEFGcQO6QR2Btz7WDejZXHL1EtIDxOQfHvj4gRjwkvO87tfHvzYxRp4swEDiXrZEHCKuJRIQCeciBOgvQNEtkJEhYwtkZchai3BAHQCKEiP4ab6pc31wPIPIYbb+JMBDVOp17ZgtXRX2s6k94VAH8QWz7+QbT5gVApZ65SNKiKgaZBAiQw2yCJGlBtmEyFaA0N3B8oTcsOR1pgRxbJCJ1U+s3pUg4Wf2Onn806qCFOF3xwxRgsNzxvZdDmIgfeYPRg/RKeQDVyEPzMDbhwwAAAAASUVORK5CYII=);
+    background-size: 70px 210px;
+}
+
+
+/*.tooltip {
+    position: relative;
+    display: inline-block;
+    border-bottom: 1px dotted black;
+}
+
+.tooltip .tooltiptext {
+    visibility: hidden;
+    width: 120px;
+    background-color: #555;
+    color: #fff;
+    text-align: center;
+    border-radius: 6px;
+    padding: 5px 0;
+    position: absolute;
+    z-index: 1;
+    bottom: 125%;
+    left: 50%;
+    margin-left: -60px;
+    opacity: 0;
+    transition: opacity 1s;
+}
+
+.tooltip .tooltiptext::after {
+    content: "";
+    position: absolute;
+    top: 100%;
+    left: 50%;
+    margin-left: -5px;
+    border-width: 5px;
+    border-style: solid;
+    border-color: #555 transparent transparent transparent;
+}
+
+.tooltip:hover .tooltiptext {
+    visibility: visible;
+    opacity: 1;
+}*/
+
+
+
+.dropbtn {
+    
+    color: white;
+    padding: 16px;
+    font-size: 16px;
+    border: none;
+    cursor: pointer;
+}
+
+.dropdown {
+    position: relative;
+    display: inline-block;
+}
+
+.dropdown-content {
+    display: none;
+    position: absolute;
+    background-color: #f9f9f9;
+    min-width: 200px;
+    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+    z-index: 1;
+}
+
+.dropdown-content a {
+    color: black;
+    padding: 12px 16px;
+    text-decoration: none;
+    display: block;
+}
+
+.dropdown-content a:hover {background-color: #f1f1f1}
+
+.dropdown:hover .dropdown-content {
+    display: block;
+}
+
+.dropdown:hover .dropbtn {
+ 
+}
+
+.lbl_rgstr{
+width:200px;
+font-size : 16px;
+}
+
+
+.select button { text-align:left;}
+.select .caret {position:absolute; right:10px; margin-top:10px;}
+.select:last-child>.btn {border-radius:5px; }
+.selected {padding-right:10px;}
+
+
+.iframe_test{
+  width: 50%;
+    height: 470px;
+    left: 50%;
+    
+    position: relative;
 }

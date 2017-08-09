@@ -1,25 +1,61 @@
-<nav ng-controller="LoginController as vm" class="navbar navbar-default navbar-fixed-top" ng-init="vm.init()">
- <div class="container">
+<nav ng-controller="LoginController as vm" class="navbar navbar-default navbar-fixed-top" style="background-color:#1f7088;" ng-init="vm.init()">
+<!--  <div class="navbar-brand" ><img src="/images/Logo.png" style="position:absolute;width:50px;height:50px;"></div> -->
+ <div class="container" style="background-color:#1f7088">
    <div class="navbar-header">
-     <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
-       <span class="sr-only">Toggle navigation</span>
+<!--      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+      
+      <span class="sr-only">Toggle navigation</span>
        <span class="icon-bar"></span>
        <span class="icon-bar"></span>
        <span class="icon-bar"></span>
-     </button>
-     <a class="navbar-brand" href="#/">Chat Bot</a>
+     </button> -->
+     <a class="navbar-brand"><img src="/images/Logo.png" style="position: relative;width:50px;height:50px;bottom: 12px;"></a>
+     <a class="navbar-brand" ng-if="!vm.isLoggedIn()" style="color:#fbf39a" href="#/home">Chat Bot</a>
+     <a class="navbar-brand" ng-if="vm.isLoggedIn()" style="color:#fbf39a" href="">Chat Bot</a>
    </div>
    <div id="navbar" class="collapse navbar-collapse">
      <ul class="nav navbar-nav">
-       <li ng-class="vm.isActiveTab('')" class="active"><a href="#/">Home</a></li>
+       <li ng-if="!vm.isLoggedIn()" onclick="document.getElementById('id01').style.display='none'; document.getElementById('id02').style.display='none'"><a href="#/home">Home</a></li>
+       <li ng-if="vm.isLoggedIn()" onclick="document.getElementById('id01').style.display='none'; document.getElementById('id02').style.display='none'"><a href="#/dashboard">Home</a></li>
        
-       <li ng-class="vm.isActiveTab('register')" ng-if="!vm.isLoggedIn()"><a href="#/register">Register</a></li>
+      <!--  <li ng-class="vm.isActiveTab('register')" ng-if="!vm.isLoggedIn()"><a href="#/register">Register</a></li> -->
+      <li  ng-if="!vm.isLoggedIn()" onclick="document.getElementById('id02').style.display='none'; document.getElementById('id01').style.display='none'" class="hover"><a href="#/contactUs">Contact Us</a></li>
+
+
+      <li  ng-if="!vm.isLoggedIn()" onclick="document.getElementById('id01').style.display='none'; document.getElementById('id02').style.display='none'" class="hover"><a href="#/register">Subscription</a></li></ul>
+       <!-- <li ng-class="vm.isActiveTab('login')"  ng-if="!vm.isLoggedIn()"><a href="#/login">Login</a></li> -->
+       <ul class="nav navbar-nav navbar-right"><li ng-if="!vm.isLoggedIn()" onclick="document.getElementById('id02').style.display='none'; document.getElementById('id01').style.display='none'" class="hover"><a href="#/login">Login</a></li></ul>
+       
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+      <!--  <button ng-class="vm.isActiveTab('login')"  ng-if="!vm.isLoggedIn()"><a onclick="document.getElementById('id01').style.display='block'">Login</a></button> -->
+       
+       <!-- <li ng-class="vm.isActiveTab('login')" ng-if="vm.isLoggedIn()" onclick="document.getElementById('id01').style.display='block'"><a href="#/login">Login</a></li> -->
        <!-- <li ng-class="vm.isActiveTab('login')" ng-if="!vm.isLoggedIn()"><a href="#/login">Login</a></li> -->
-       <li ng-class="vm.isActiveTab('profile')" ng-if="vm.isLoggedIn()" ><a href="#/profile">Profile</a></li>
-       <li ng-class="vm.isActiveTab('scrape')" ng-if="vm.isLoggedIn()"><a href="#/scrape">Bot Service</a></li>
+       <ul class="nav navbar-nav"><li ng-class="vm.isActiveTab('profile')" ng-if="vm.isLoggedIn()" ><a href="#/profile">Profile</a></li>
+       <li ng-class="vm.isActiveTab('scrape')" ng-if="vm.isLoggedIn() && vm.authEmail()" ><a href="#/scrape_url"><!-- <button ng-click="vm.botservice()"> -->Bot Service<!-- </button> --></a></li>
        <!-- <li ng-class="vm.isActiveTab('store')" ng-if="vm.isLoggedIn()"><a href="#/store">Bot Store</a></li> -->
      </ul>
-      <form ng-if="!vm.isLoggedIn()" class="navbar-form navbar-right" role="login" ng-submit="vm.login()">
+<!--       <form ng-if="!vm.isLoggedIn()" class="navbar-form navbar-right" role="login" ng-submit="vm.login()">
 
         <div class="form-group" ng-class="{'has-error': vm.error}">
           <input type="text" class="form-control input-sm" placeholder="Username" ng-model="vm.username" autocapitalize="none">
@@ -30,11 +66,194 @@
         <button type="submit" class="btn btn-sm btn-success">Login</button><div ng-if="vm.error" class="alert-danger " role="alert">
   {{ vm.error }}
 </div>
-      </form>
+      </form> -->
+      <!-- <ul>
+      <li  ng-if="!vm.isLoggedIn()" onclick="document.getElementById('id02').style.display='none'; document.getElementById('id01').style.display='block'" class="hover"><a>Login</a></li></ul> -->
     <ul ng-if="vm.isLoggedIn()" class="nav navbar-nav navbar-right">
-      <li><p class="navbar-text">Welcome back {{ vm.loggedInUser }}</p></li>
+      <!-- <li><p class="navbar-text">Welcome back {{ vm.loggedInUser }}</p></li> -->
+
       <li><button class="navbar-btn btn-sm btn-info" ng-click="vm.logout()">Logout</button></li>
     </ul>
    </div>
  </div>
+ 
+
+
+
+
+
+
+
+<div id="id01" class="modal1">
+  
+  <form name="userForm" class="modal-content1 animate" ng-submit="vm.login()">
+    <div class="imgcontainer">
+      <span onclick="document.getElementById('id01').style.display='none'" ng-click="vm.clear()" class="close" title="Close">&times;</span>
+      
+    </div>
+
+    <div class="container">
+      <label class="lbl_popup"><b>Username</b></label>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp 
+      <input type="text" placeholder="Enter Username" ng-model="vm.username" required><br></br>
+
+      <label class="lbl_popup"><b>Password</b></label>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp 
+      <input type="password" placeholder="Enter Password"  ng-model="vm.password" required>
+      <div ng-if="vm.error" class="error_lgn" role="alert">
+  {{ vm.error }}
+</div>        <br></br>
+      
+      
+   
+    </div>
+
+    <div class="container_login" style="background-color:#f1f1f1">
+      <button type="submit" class="login_btn" style="position: relative;left: 25%;">Login</button>
+      <!-- <button type="button" onclick="document.getElementById('id01').style.display='none'" class="cancelbtn">Cancel</button> -->
+      <span class="psw"><a href="" style="color:#df691a" ng-click="vm.redirect_frgetpasswrd()">Forgot password?</a></span>
+    </div>
+  </form>
+</div>
+
+
+
+
+
+<div id="id02" class="modal1 ">
+  
+  <form class="modal-content1 animate" ng-click='validate()' ng-submit="vm.register()">
+    <div class="imgcontainer">
+      <span  onclick="document.getElementById('id02').style.display='none'" ng-click="vm.clear()" class="close" title="Close"> &times;</span>
+      
+    </div>
+
+    <div class="container">
+
+      <label class="lbl_popup"><b>Username</b></label>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp 
+      <input type="text" placeholder="Enter Username" placeholder="Username" ng-model="vm.username" required><br></br>
+
+      <label class="lbl_popup"><b>Password</b></label>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp 
+      <input type="password" placeholder="Enter Password" placeholder="Password" ng-model="vm.password" required><br></br>
+      <label class="lbl_popup" style="position:relative; top:10px;"><b>Repeat Password</b></label>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp 
+      <input type="password" placeholder="Enter Password" placeholder="Password" ng-model="vm.passwordRepeat" required><br></br>
+      <label class="lbl_popup"><b>E-Mail</b></label>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
+      <input type="email" placeholder="Enter E-Mail" placeholder="email" ng-model="vm.eMail" required>
+      <div ng-if="vm.error" class="error_rgstr" role="alert">
+  {{ vm.error }}
+</div>        <br></br>
+      
+      
+   
+    </div>
+
+    <div class="container_login" style="background-color:#f1f1f1">
+      <button type="submit" class="rgstr_btn">Register</button>
+      <!-- <button type="button" onclick="document.getElementById('id01').style.display='none'" class="cancelbtn">Cancel</button> -->
+      <!-- <span class="psw"><a href="#">Forgot password?</a></span> -->
+    </div>
+  </form>
+</div>
+
+
+
+<div id="id03" class="modal1 ">
+  
+  <form class="modal-content1 animate" ng-submit="vm.login()">
+    <div class="imgcontainer">
+      <span onclick="document.getElementById('id03').style.display='none'" ng-click="vm.clear()" class="close" title="Close">&times;</span>
+      
+    </div></br></br></br>
+
+    <div  class="w3-button w3-green w3-round-xlarge success_btn_popup"  role="alert">
+       <p>{{ 'Successfully Registered...Now You Can Login By ' }}<a href="#" style="color:#df691a" ng-click="vm.redirect()">Clicking here</a></p>
+    </div></br></br></br>
+
+<!--     <div class="container">
+      <label class="lbl_popup"><b>Username</b></label>
+      <input type="text" placeholder="Enter Username"  ng-model="vm.username" required><br></br>
+
+      <label class="lbl_popup"><b>Password</b></label>
+      <input type="password" placeholder="Enter Password"  ng-model="vm.password" required>
+      <div ng-if="vm.error" class="error_lgn" role="alert">
+  {{ vm.error }}
+</div>        <br></br>
+      
+      
+   
+    </div> -->
+
+<!--     <div class="container_login" style="background-color:#f1f1f1">
+      <button type="submit" class="login_btn" style="position: relative;left: 95px;">Login</button>
+      
+      <span class="psw"><a href="#">Forgot password?</a></span>
+    </div> -->
+  </form>
+</div>
+
+
+<div id="id04" class="modal1">
+  
+  <form name="userForm" class="modal-content1 animate" ng-submit="vm.forgetpasswrd()">
+    <div class="imgcontainer">
+      <span onclick="document.getElementById('id04').style.display='none'" ng-click="vm.clear()" class="close" title="Close">&times;</span>
+      
+    </div>
+
+    <div class="container">
+     <label class="lbl_popup"><b>E-Mail</b></label>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
+     <input type="email" placeholder="Enter E-Mail" placeholder="email" ng-model="vm.eMail_frgtpswrd" required>
+     <div ng-if="vm.error" class="error_lgn" role="alert">
+  {{ vm.error }}
+</div>        <br></br>
+      
+      
+   
+    </div>
+
+    <div class="container_login" style="background-color:#f1f1f1">
+      <button type="submit" class="login_btn" style="position: relative;left: 35%;">Get Verification</button>
+      <!-- <button type="button" onclick="document.getElementById('id01').style.display='none'" class="cancelbtn">Cancel</button> -->
+      <!-- <span class="psw"><a href="#" style="color:#df691a">Forgot password?</a></span> -->
+    </div>
+  </form>
+</div>
+
+
+<div id="id05" class="modal1 ">
+  
+  <form class="modal-content1 animate">
+    <div class="imgcontainer">
+      <span onclick="document.getElementById('id05').style.display='none'" ng-click="vm.clear()" class="close" title="Close">&times;</span>
+      
+    </div></br></br></br>
+
+    <div  class="w3-button w3-green w3-round-xlarge success_btn_popup" style="width: 400px;"  role="alert">
+       <p>{{ 'Please check your E-mail' }}</p>
+    </div></br></br></br>
+
+<!--     <div class="container">
+      <label class="lbl_popup"><b>Username</b></label>
+      <input type="text" placeholder="Enter Username"  ng-model="vm.username" required><br></br>
+
+      <label class="lbl_popup"><b>Password</b></label>
+      <input type="password" placeholder="Enter Password"  ng-model="vm.password" required>
+      <div ng-if="vm.error" class="error_lgn" role="alert">
+  {{ vm.error }}
+</div>        <br></br>
+      
+      
+   
+    </div> -->
+
+<!--     <div class="container_login" style="background-color:#f1f1f1">
+      <button type="submit" class="login_btn" style="position: relative;left: 95px;">Login</button>
+      
+      <span class="psw"><a href="#">Forgot password?</a></span>
+    </div> -->
+  </form>
+</div>
+
+<div id="mydiv">    
+    <img src="/images/ajax-loader.gif" class="ajax-loader"/> 
+</div>
+
 </nav>

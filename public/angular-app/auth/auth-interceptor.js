@@ -1,4 +1,4 @@
-angular.module('meanhotel').factory('AuthInterceptor', AuthInterceptor);
+angular.module('meanchat').factory('AuthInterceptor', AuthInterceptor);
 
 function AuthInterceptor($location, $q, $window, AuthFactory) {
   return {
@@ -22,6 +22,7 @@ function AuthInterceptor($location, $q, $window, AuthFactory) {
     if (response.status === 401) {
       AuthFactory.isLoggedIn = false;
     }
+    console.log('logi');
     return response || $q.when(response);
   }
 

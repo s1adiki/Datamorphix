@@ -1,0 +1,427 @@
+<div ng-if="vm.message" id="message" class="alert alert-success" role="alert">
+  <p>{{ vm.message }}</p>
+</div>
+<div ng-if="vm.error" class="alert alert-danger" role="alert">
+  {{ vm.error }}
+</div>
+
+<div class="col-md-6 "  style="width:220px;margin-left:-190px;left:85px;" ng-init="vm.notAdmin()">
+</br></br></br></br></br>
+<div class="input-group-btn select" style="width: 220px;" id="select_user1">
+    <button type="button" class="btn btn-default dropdown-toggle" style="border-radius:5px;" ng-click="vm.show_usr_mngmnt()" data-toggle="dropdown" aria-expanded="false"><span class="selected">User Management</span> <span class="fa fa-caret-right" style="position:absolute;top:10px; right:20px;"></span></button>
+    <ul class="dropdown-menu option" style="width: 210px; left:177px;top:8px; " role="menu">
+        <li id="1" ng-click="vm.add_user()"><a href="">Add User</a></li>
+        <li id="2" ng-click="vm.delete_user()"><a href="">Delete User</a></li>
+         <li id="3" ng-click="vm.edit_user()"><a href="">Edit User</a></li>
+    </ul>
+</div></br></br>
+<div class="input-group-btn select" style="width: 220px;" id="select2_botmngmnt">
+    <button type="button" class="btn btn-default dropdown-toggle" style="border-radius:5px;"  data-toggle="dropdown" aria-expanded="false"><span class="selected">BOT Management</span> <span class="fa fa-caret-right" style="position:absolute;top:10px; right:20px;"></span></button>
+    <ul class="dropdown-menu option" style="width: 210px; left:177px;top:8px; " role="menu">
+        <li id="1" ng-click="vm.show_bot_mngmnt_info()" ><a href="">Information BOT</a></li>
+        <li id="2" ng-click="vm.show_bot_mngmnt_support()" ><a href="">Support BOT</a></li>
+        <li id="3" ng-click="vm.show_bot_mngmnt_help()" ><a href="">Help BOT</a></li>
+    </ul>
+</div></br></br>
+<div class="input-group-btn" style="width: 220px;" id="select3_integration">
+    <button type="button" class="btn btn-default " style="border-radius:5px;" ng-click="vm.show_Integration_mngmnt()" data-toggle="" aria-expanded="false"><span class="">Integration</span> <span class="fa fa-caret-right" style="position:absolute;top:10px; right:20px;"></span></button>
+    <!-- <ul class="dropdown-menu option" style="width: 210px; left:177px;top:8px; " role="menu">
+        <li id="1" ><a href="">--Coming--</a></li>
+        <li id="2"><a href="">--Coming--</a></li>
+    </ul> -->
+</div></br></br>
+
+</div>
+
+
+<div  id="bot_mngmnt_overall" ng-init = "vm.admin_dashboard()">
+
+<div id= "bot_mngmnt_html_overall">
+  <!-- <label style="position: relative;height: 115px;left: 420px;">Info BOT</label>
+  <img src="/images/chatbot_1.jpg" style="position: relative;height: 115px;left: 320px;top: 85px;">
+  <button type="submit" class="rgstr_btn" ng-click="vm.test_bot()" style="position: relative;top: 185px;left: 160px;">Test</button>  <button type="submit" class="rgstr_btn" style="position: relative;top: 185px;left: 160px;" ng-click="vm.deploy_bot()">Deploy</button>
+<label style="position: relative;height: 115px;left: 420px;">Info BOT</label>
+  <img src="/images/chatbot_1.jpg" style="position: relative;height: 115px;left: 320px;top: 85px;">
+  <button type="submit" class="rgstr_btn" ng-click="vm.test_bot()" style="position: relative;top: 185px;left: 160px;">Test</button>  <button type="submit" class="rgstr_btn" style="position: relative;top: 185px;left: 160px;" ng-click="vm.deploy_bot()">Deploy</button> -->
+</div>
+
+
+
+
+</div>
+
+
+
+<div  id="user_mngmnt" ng-show="user_mngmnt">
+<!-- <div style="position:relative;left:30%;width:65%">
+<button class="login_btn" type="submit" ng-click="vm.add_user()">Add User</button>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
+<button class="login_btn" type="submit" ng-click="vm.delete_user()">Delete User</button>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
+<button class="login_btn" type="submit" ng-click="">Edit User</button></div> --></br>
+
+<div ng-show="add_user" style="position:relative;right:20px;left:35%;width:65%">
+</br></br></br>
+<form  ng-submit="vm.user_authorization()" name="add">
+ 
+
+  <div class="form-group"  style="right: 30px;position: relative;">
+    <label for="username" class='lbl_rgstr'>First Name <!-- <f style="color:red">*</f> --></label>
+    <input type="text" class="form-control" id="firstname" placeholder="First Name" ng-model="vm.firstname" autocapitalize="none" required>
+  </div>
+  <div class="form-group" style="right: 30px;position: relative;">
+    <label for="username" class='lbl_rgstr'>Last Name</label>
+    <input type="text" class="form-control" id="lastname" placeholder="Last Name" ng-model="vm.lastname" autocapitalize="none" required>
+  </div>
+  <div class="form-group" style="right: 30px;position: relative;">
+    <label for="email" class='lbl_rgstr'>E-Mail</label>
+    <input type="email" class="form-control" id="email1" placeholder="E-Mail" ng-model="vm.emAil1" autocapitalize="none" required>
+  </div>
+  <!-- <div class="form-group" style="right: 30px;position: relative;">
+    <label for="password-repeat" class='lbl_rgstr'>Middle Name</label>
+    <input type="password" class="form-control" id="middlename" placeholder="Middle Name" ng-model="vm.middlename" autocapitalize="none">
+  </div> -->
+  <div class="form-group" style="right: 30px;position: relative;">
+    <label for="empid" class='lbl_rgstr'>Employee ID</label>
+    <input type="text" class="form-control" id="empId" placeholder="Employee ID" ng-model="vm.empId" autocapitalize="none" required>
+  </div>
+  <div class="form-group" style="right: 30px;position: relative;" >
+    <label for="number" class='lbl_rgstr' >Department</label>
+    <input type="text" class="form-control" id="Department" placeholder="Department" ng-model="vm.Department" autocapitalize="none" required>
+  </div>
+    <div class="form-group input-group-btn select" id="select_role_user" >
+    <label for="Organisation name" class='lbl_rgstr'>Role</label>
+    <!-- <input type="text" class="form-control" id="Role" placeholder="Role" ng-model="vm.Role" autocapitalize="none" required> -->
+    
+    <button type="button" class="btn btn-default dropdown-toggle" style="width: 225px;left: 5px;bottom: 10px;border-radius: 5px;"  data-toggle="dropdown" aria-expanded="false"><span class="selected">Select Category</span> <span class="caret"></span></button>
+    <ul class="dropdown-menu option" style="left: 207px;width: 222px;top: 37px;" role="menu">
+        <li id="1"><a ng-click="vm.change(select_role_user)" href="">Admin</a></li>
+        <li id="2"><a ng-click="vm.change(select_role_user)" href="">Developer</a></li>
+        <li id="3"><a ng-click="vm.change(select_role_user)" href="">Tester</a></li>
+        <li id="4"><a ng-click="vm.change(select_role_user)" href="">System Integrator</a></li>
+        <li id="5"><a ng-click="vm.change(select_role_user)" href="">Bussiness Analyst</a></li>
+    </ul>
+</div>
+  
+      <div class="form-group">
+    <label for="Organisation name" class='lbl_rgstr'>Manager ID</label>
+    <input type="text" class="form-control" id="manager_ID" placeholder="Manager ID" ng-model="vm.manager_ID" autocapitalize="none" required>
+  </div>
+</br>
+    <div class="form-group">
+    <label for="Type Of Bot" class='lbl_rgstr' style="position:absolute;">Type Of Bot Required</label>
+
+<div style="left:200px;">
+      <label class="checkbox" style="font-size:16px;position: relative; left: 40%;"><input type="checkbox" ng-model="vm.info_chk" ng-change="vm.bot_type_info(vm.info_chk)">Information BOT</label></br>
+    
+     <label class="checkbox" style="font-size:16px; position: relative; left: 40%;"><input type="checkbox" ng-model="vm.service_chk" ng-change="vm.bot_type_service(vm.service_chk)">Service BOT</label> </br>
+     <label class="checkbox" style="font-size:16px; position: relative; left: 40%;"><input type="checkbox" ng-model="vm.help_chk" ng-change="vm.bot_type_help(vm.help_chk)">Help BOT</label>
+</div>
+<!-- <div ng-show="info_drpdwn" style="position:absolute">
+
+<div class="input-group-btn select" style="width: 185px;left: 500px;top: -190px;" id="select1">
+    <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown"  aria-expanded="false"><span class="selected">Select Category</span> <span class="caret"></span></button>
+    <ul class="dropdown-menu option"  style="width: 185px;" role="menu">
+        <li id="1"><a ng-click="vm.change(select1)" href="">View Only</a></li>
+        <li id="2"><a ng-click="vm.change(select1)" href="">Edit</a></li>
+    </ul>
+</div>
+  </div>
+  <div ng-show="service_drpdwn" style="position:absolute" >
+
+  
+<div class="input-group-btn select" style="width: 185px;left: 500px;top: -120px;" id="select2">
+    <button type="button" class="btn btn-default dropdown-toggle"  data-toggle="dropdown" aria-expanded="false"><span class="selected">Select Category</span> <span class="caret"></span></button>
+    <ul class="dropdown-menu option" style="width: 185px;" role="menu">
+        <li id="1"><a ng-click="vm.change(select2)" href="">View Only</a></li>
+        <li id="2"><a ng-click="vm.change(select2)" href="">Edit</a></li>
+    </ul>
+</div>
+            
+
+  
+  </div>
+  <div ng-show="help_drpdwn" style="position:absolute" >
+
+<div class="input-group-btn select"  style="width: 185px;left: 500px;top: -50px;" id="select3">
+    <button type="button" class="btn btn-default dropdown-toggle"  data-toggle="dropdown" aria-expanded="false"><span class="selected">Select Category</span> <span class="caret"></span></button>
+    <ul class="dropdown-menu option" style="width: 185px;" role="menu">
+        <li id="1"><a ng-click="vm.change(vm.select3)" ng-model="vm.select3" href="">View Only</a></li>
+        <li id="2"><a ng-click="vm.change(vm.select3)" ng-model="vm.select3" href="">Edit</a></li>
+    </ul>
+</div>
+  </div> -->
+</div>
+</br>
+<button type="submit" class="rgstr_btn">Add User</button></br>
+</form>
+
+  </div></br>
+
+
+<div ng-show="delete_user" ng-init="vm.delete_users()" style="position:relative;left:20%;width:80%">
+</br></br>
+<form   name="delete">
+ 
+<div id="section_delete">
+  
+<div style="width:100%">
+
+<div class="form-group">
+
+    <label for="Organisation name" style="position:relative; width:95%; right:40px;height:50px;" class='lbl_rgstr module_btn'><div style="position:absolute;max-width:15%;left:5%;" >Employee ID <c style="position: relative;left: 25%;">|</c></div><div style="position:absolute;left:30%;max-width:15%;">Name<c style="position: relative;left: 75%;">|</c> </div><div style="position:absolute;left:48%;max-width:15%;">Bots Assigned <c style="position: relative;left: 135%;top:-23px;">|</c>  </div><div style="position:absolute;left:80%;max-width:15%;">Mail Id</div> </label>
+    <!-- <input type="text" class="form-control" id="manager_ID" placeholder="Manager ID" ng-model="vm.manager_ID" autocapitalize="none" required> -->
+  </div>
+
+
+  <div class="form-group" ng-bind-html="delete_innerhtml" data-html="true"id='delete_innerhtml' >
+
+
+   
+    
+  </div>
+<div id="edit_div" ng-show="edit_div"></br></br></br></br></br></br>
+  <form  name="edit">
+ 
+
+  <div class="form-group"  >
+    <label for="username" class='lbl_rgstr'>First Name <!-- <f style="color:red">*</f> --></label>
+    <input type="text" class="form-control" id="firstname" placeholder="First Name" ng-model="vm.firstname_edit" autocapitalize="none" required>
+  </div>
+  <div class="form-group" >
+    <label for="username" class='lbl_rgstr'>Last Name</label>
+    <input type="text" class="form-control" id="lastname" placeholder="Last Name" ng-model="vm.lastname_edit" autocapitalize="none" required>
+  </div>
+  <div class="form-group" >
+    <label for="email" class='lbl_rgstr'>E-Mail</label>
+    <input type="email" class="form-control" id="email1" placeholder="E-Mail" ng-model="vm.emAil1_edit" autocapitalize="none" required>
+  </div>
+  <!-- <div class="form-group" style="right: 30px;position: relative;">
+    <label for="password-repeat" class='lbl_rgstr'>Middle Name</label>
+    <input type="password" class="form-control" id="middlename" placeholder="Middle Name" ng-model="vm.middlename" autocapitalize="none">
+  </div> -->
+  <div class="form-group" >
+    <label for="empid" class='lbl_rgstr'>Employee ID</label>
+    <input type="text" class="form-control" id="empId" placeholder="Employee ID" ng-readonly="vm.empId_edit" ng-model="vm.empId_edit" autocapitalize="none" required>
+  </div>
+  <div class="form-group"  >
+    <label for="number" class='lbl_rgstr' >Department</label>
+    <input type="text" class="form-control" id="Department" placeholder="Department" ng-model="vm.Department_edit" autocapitalize="none" required>
+  </div>
+    <div class="form-group input-group-btn select" id="select_role_user_edit" >
+    <label for="Organisation name" class='lbl_rgstr'>Role</label>
+    <!-- <input type="text" class="form-control" id="Role" placeholder="Role" ng-model="vm.Role" autocapitalize="none" required> -->
+    
+    <button type="button" class="btn btn-default dropdown-toggle" style="width: 277px;left: 5px;bottom: 10px;border-radius: 5px;"  data-toggle="dropdown" aria-expanded="false"><span class="selected">Select Category</span> <span class="caret"></span></button>
+    <ul class="dropdown-menu option" style="left: 207px;width: 222px;top: 37px;" role="menu">
+        <li id="1"><a ng-click="vm.change(select_role_user_edit)" href="">Admin</a></li>
+        <li id="2"><a ng-click="vm.change(select_role_user_edit)" href="">Developer</a></li>
+        <li id="3"><a ng-click="vm.change(select_role_user_edit)" href="">Tester</a></li>
+        <li id="4"><a ng-click="vm.change(select_role_user_edit)" href="">System Integrator</a></li>
+        <li id="5"><a ng-click="vm.change(select_role_user_edit)" href="">Bussiness Analyst</a></li>
+    </ul>
+</div>
+      <div class="form-group">
+    <label for="Organisation name" class='lbl_rgstr'>Manager ID</label>
+    <input type="text" class="form-control" id="manager_ID" placeholder="Manager ID" ng-model="vm.manager_ID_edit" autocapitalize="none" required>
+  </div>
+</br>
+    <div class="form-group">
+    <label for="Type Of Bot" class='lbl_rgstr' style="position:absolute;">Type Of Bot Required</label>
+
+<div style="left:200px;">
+      <label class="checkbox" style="font-size:16px;position: relative; left: 30%;"><input type="checkbox" ng-checked="edit_s1" ng-model="vm.info_chk_edit" ng-change="vm.bot_type_info_edit(vm.info_chk_edit)">Information BOT</label></br>
+    
+     <label class="checkbox" style="font-size:16px; position: relative; left: 30%;"><input type="checkbox" ng-checked="edit_s2" ng-model="vm.service_chk_edit" ng-change="vm.bot_type_service_edit(vm.service_chk_edit)">Service BOT</label> </br>
+     <label class="checkbox" style="font-size:16px; position: relative; left: 30%;"><input type="checkbox" ng-checked="edit_s3" ng-model="vm.help_chk_edit" ng-change="vm.bot_type_help_edit(vm.help_chk_edit)">Help BOT</label>
+</div>
+<!-- <div ng-show="info_drpdwn_edit" style="position:absolute">
+
+<div class="input-group-btn select" style="width: 185px;left: 500px;top: -190px;" id="select1_edit">
+    <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown"  aria-expanded="false"><span class="selected">Select Category</span> <span class="caret"></span></button>
+    <ul class="dropdown-menu option"  style="width: 185px;" role="menu">
+        <li id="1"><a ng-click="vm.change(select1_edit)" href="">View Only</a></li>
+        <li id="2"><a ng-click="vm.change(select1_edit)" href="">Edit</a></li>
+    </ul>
+</div>
+  </div>
+  <div ng-show="service_drpdwn_edit" style="position:absolute" >
+
+  
+<div class="input-group-btn select" style="width: 185px;left: 500px;top: -120px;" id="select2_edit">
+    <button type="button" class="btn btn-default dropdown-toggle"  data-toggle="dropdown" aria-expanded="false"><span class="selected">Select Category</span> <span class="caret"></span></button>
+    <ul class="dropdown-menu option" style="width: 185px;" role="menu">
+        <li id="1"><a ng-click="vm.change(select2_edit)" href="">View Only</a></li>
+        <li id="2"><a ng-click="vm.change(select2_edit)" href="">Edit</a></li>
+    </ul>
+</div>
+            
+
+  
+  </div>
+  <div ng-show="help_drpdwn_edit" style="position:absolute" >
+
+<div class="input-group-btn select"  style="width: 185px;left: 500px;top: -50px;" id="select3_edit">
+    <button type="button" class="btn btn-default dropdown-toggle"  data-toggle="dropdown" aria-expanded="false"><span class="selected">Select Category</span> <span class="caret"></span></button>
+    <ul class="dropdown-menu option" style="width: 185px;" role="menu">
+        <li id="1"><a ng-click="vm.change(vm.select3_edit)" ng-model="vm.select3" href="">View Only</a></li>
+        <li id="2"><a ng-click="vm.change(vm.select3_edit)" ng-model="vm.select3" href="">Edit</a></li>
+    </ul>
+</div>
+  </div> -->
+</div>
+</br>
+<button type="submit" ng-click="vm.user_authorization_edit()" class="rgstr_btn">Submit</button></br>
+</form>
+</div>
+
+
+</div>
+</div>
+
+
+</form>
+
+  </div>
+
+
+
+
+
+
+
+
+</div>
+
+
+
+<div  id="bot_mngmnt" ng-show="bot_mngmnt">
+
+<div id= "bot_mngmnt_html">
+  <!-- <label style="position: relative;height: 115px;left: 420px;">Info BOT</label>
+  <img src="/images/chatbot_1.jpg" style="position: relative;height: 115px;left: 320px;top: 85px;">
+  <button type="submit" class="rgstr_btn" ng-click="vm.test_bot()" style="position: relative;top: 185px;left: 160px;">Test</button>  <button type="submit" class="rgstr_btn" style="position: relative;top: 185px;left: 160px;" ng-click="vm.deploy_bot()">Deploy</button>
+<label style="position: relative;height: 115px;left: 420px;">Info BOT</label>
+  <img src="/images/chatbot_1.jpg" style="position: relative;height: 115px;left: 320px;top: 85px;">
+  <button type="submit" class="rgstr_btn" ng-click="vm.test_bot()" style="position: relative;top: 185px;left: 160px;">Test</button>  <button type="submit" class="rgstr_btn" style="position: relative;top: 185px;left: 160px;" ng-click="vm.deploy_bot()">Deploy</button> -->
+</div>
+
+
+
+
+</div>
+
+
+<div id="mydiv" ng-show="loading">    
+    <img src="/images/ajax-loader.gif" class="ajax-loader"/> 
+</div>
+
+
+
+<!-- <div style="position:relative;left:30%;width:65%">
+<button class="login_btn" type="submit" ng-click="vm.add_user()">Add User</button>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
+<button class="login_btn" type="submit" ng-click="vm.delete_user()">Delete User</button>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
+<button class="login_btn" type="submit" ng-click="">Edit User</button></div> --></br>
+
+<div ng-show="Integration_mngmnt" style="position:relative;right:20px;left:35%;width:65%">
+</br></br></br>
+<form   name="integration">
+
+
+
+
+  <div class="form-group"  style="right: 90px;position: relative;">
+    <label for="service_hosted" class='lbl_rgstr'>Service Hosted:  </label>
+
+  </div>
+
+  <div class="form-group"  style="position: relative;">
+    <label for="service_hosted" class='lbl_rgstr'>IP Address </label>
+    <input type="text_register" class="form-control" id="serviceHosted" placeholder="Service Hosted" ng-readonly="vm.serviceHosted" ng-model="vm.serviceHosted" autocapitalize="none" required>
+  </div>
+  <div class="form-group" style="position: relative;">
+    <label for="Domain_Name" class='lbl_rgstr'>Domain Name</label>
+    <input type="text_register" class="form-control" id="domainName" placeholder="Domain Name" ng-readonly="vm.dommainName" ng-model="vm.dommainName" autocapitalize="none" required>
+  </div>
+   <div class="form-group input-group-btn select" id="select_role_user" >
+    <label for="Organisation name" class='lbl_rgstr'>Services Avaliable</label>
+ <div id="checkbox_integration_html"></div>
+ <!-- <label class="checkbox" style="font-size:16px;position: relative;left: 35%;bottom: 10px;"><input type="checkbox" style="bottom:3px" ng-model="vm.info_chk" ng-change="vm.bot_type_info(vm.info_chk)">Information BOT</label></br>
+ <label class="checkbox" style="font-size:16px;position: relative;left: 35%;bottom: 10px;"><input type="checkbox" style="bottom:3px" ng-model="vm.info_chk" ng-change="vm.bot_type_info(vm.info_chk)">Information BOT</label></br>
+ <label class="checkbox" style="font-size:16px;position: relative;left: 35%;bottom: 10px;"><input type="checkbox" style="bottom:3px" ng-model="vm.info_chk" ng-change="vm.bot_type_info(vm.info_chk)">Information BOT</label></br>
+ <label class="checkbox" style="font-size:16px;position: relative;left: 35%;bottom: 10px;"><input type="checkbox" style="bottom:3px" ng-model="vm.info_chk" ng-change="vm.bot_type_info(vm.info_chk)">Information BOT</label></br>
+ <label class="checkbox" style="font-size:16px;position: relative;left: 35%;bottom: 10px;"><input type="checkbox" style="bottom:3px" ng-model="vm.info_chk" ng-change="vm.bot_type_info(vm.info_chk)">Information BOT</label></br>
+ -->
+</div></br>
+<!--   <div class="form-group" style="right: 30px;position: relative;">
+    <label for="services_Available" class='lbl_rgstr'>Services Available</label>
+
+    <button type="button" class="btn btn-default dropdown-toggle" style="width: 30%; padding:5px 15px; position:relative; margin:8px"  data-toggle="dropdown" aria-expanded="true">
+        <span class="selected">Services</span>
+        <span class="caret"></span>
+    </button>
+    <ul class="dropdown-menu" style="width: 30%; padding:5px 15px; position:relative; margin:8px" role="menu">
+        <div id="append_drp_div">
+                <li style="position: relative;left: 15px;font-size:12px;" class="ng-scope">
+                    <c>http://xyz.com/getAccountDetails
+
+                    </c>
+                </li>
+
+                <li style="position: relative;left: 15px;font-size:12px;" class="ng-scope">
+                    <c>http://xyz.com/GetCustomerDetailsbyId  </c>
+                </li>
+
+
+                <li style="position: relative;left: 15px;font-size:12px;" class="ng-scope">
+                    <c>http://xyz.com/getATMInfo</c>
+                </li>
+
+                <li style="position: relative;left: 15px;font-size:12px;" class="ng-scope">
+                <c>http://xyz.com/getBranchInfo </c>
+                </li>
+
+            </div>
+        </ul>
+    </div> -->
+  <!-- <div class="form-group" style="right: 30px;position: relative;">
+    <label for="password-repeat" class='lbl_rgstr'>Middle Name</label>
+    <input type="password" class="form-control" id="middlename" placeholder="Middle Name" ng-model="vm.middlename" autocapitalize="none">
+  </div> -->
+
+    <div class="form-group" style="right: 90px;position: relative;">
+        <label for="enterpriseIP" class='lbl_rgstr'>Service End Point :</label></div>
+
+
+
+
+  <div class="form-group" style="position: relative;left: 30px;">
+    <label for="enterpriseIP" class='lbl_rgstr'>Enterprise Host IP Address</label>
+    <input type="text_register" class="form-control" id="enterpriseIP" ng-show="read_inti" placeholder="Domain IP Address" ng-model="vm.enterpriseIP" autocapitalize="none" required>
+    <input type="text_register" class="form-control" id="enterpriseIP1" ng-show="readwrite_inti" placeholder="Domain IP Address" ng-readonly="vm.enterpriseIP1" ng-model="vm.enterpriseIP1" autocapitalize="none" required>
+  </div>
+  <div class="form-group" style="position: relative;left: 30px;" >
+    <label for="enterpriseDomain" class='lbl_rgstr' >Enterprise Domain Name</label>
+    <input type="text_register" class="form-control" id="Department1" ng-show="read_inti" placeholder="Domain Name" ng-model="vm.enterpriseDomain" autocapitalize="none" required>
+    <input type="text_register" class="form-control" id="Department" ng-show="readwrite_inti" placeholder="Domain Name" ng-readonly="vm.enterpriseDomain1" ng-model="vm.enterpriseDomain1" autocapitalize="none" required>
+  </div>
+    <div class="form-group" style="position: relative;left: 30px;" >
+    <label for="User ID" class='lbl_rgstr'> Access User ID</label>
+    <input type="text_register" class="form-control" id="accessUser" ng-show="read_inti" placeholder="Access User" ng-model="vm.accessUser" autocapitalize="none" required>
+    <input type="text_register" class="form-control" id="accessUser1" ng-show="readwrite_inti" placeholder="Access User" ng-readonly="vm.accessUser1" ng-model="vm.accessUser1" autocapitalize="none" required>
+  </div>
+      <div class="form-group" style="position: relative;left: 30px;" >
+    <label for="password" class='lbl_rgstr'>Access Password</label>
+    <input type="password" style="width: 50%;" class="form-control" ng-show="read_inti" id="manager_ID" placeholder="Access Password" ng-model="vm.access_password" autocapitalize="none" required>
+    <input type="password" style="width: 50%;" class="form-control1" ng-show="readwrite_inti" id="manager_ID" ng-readonly="vm.access_password1" placeholder="Access Password" ng-model="vm.access_password1" autocapitalize="none" required>
+  </div>
+  <div class="form-group" style="position: relative;left: 30px;" >
+    <label for="User ID" class='lbl_rgstr'> DataBase Name</label>
+    <input type="text_register" class="form-control" id="accessUser" ng-show="read_inti" placeholder="Database Name" ng-model="vm.dbname" autocapitalize="none" required>
+    <input type="text_register" class="form-control" id="accessUser1" ng-show="readwrite_inti" placeholder="Database Name" ng-readonly="vm.dbname1" ng-model="vm.dbname1" autocapitalize="none" required>
+  </div>
+
+
+<button type="submit" ng-click="vm.submit_integtn()" ng-show="submit" class="rgstr_btn">Submit</button>
+<button type="submit" ng-click="vm.edit_integtn()" ng-show="edit" class="rgstr_btn">Edit</button>
+<button type="submit" ng-click="vm.cancel_integtn()" ng-show="cancel" class="rgstr_btn">Cancel</button></br>
+</form>
+</div></br>

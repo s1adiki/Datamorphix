@@ -1,14 +1,18 @@
-angular.module('meanhotel', ['ngRoute', 'angular-jwt']).config(config).run(run);
+angular.module('meanchat', ['ngRoute', 'angular-jwt']).config(config).run(run);
 
 function config($httpProvider, $routeProvider, $locationProvider) {
+
   $httpProvider.interceptors.push('AuthInterceptor');
   $locationProvider.html5Mode(false).hashPrefix('');
   $routeProvider
     .when('/', {
       templateUrl: 'angular-app/main/main.html',
+      controller: mainController,
+      controllerAs: 'vm',
       access: {
         restricted: false
       }
+
     })
     /*.when('/hotels', {
       templateUrl: 'angular-app/hotel-list/hotels.html',
@@ -34,9 +38,41 @@ function config($httpProvider, $routeProvider, $locationProvider) {
         restricted: false
       }
     })
+    .when('/home', {
+      templateUrl: 'angular-app/main/main.html',
+      controller: mainController,
+      controllerAs: 'vm',
+      access: {
+        restricted: false
+      }
+    })
+    .when('/home_loggedin', {
+      templateUrl: 'angular-app/main_loggedin/main_loggedin.html',
+      controller: mainloggedinController,
+      controllerAs: 'vm',
+      access: {
+        restricted: true
+      }
+    })
+    .when('/dashboard', {
+      templateUrl: 'angular-app/dashboard/dashboard.html',
+      controller: dashboardController,
+      controllerAs: 'vm',
+      access: {
+        restricted: true
+      }
+    })
+    .when('/password', {
+      templateUrl: 'angular-app/forget_password/forget_password.html',
+      controller: userpasswordController,
+      controllerAs: 'vm',
+      access: {
+        restricted: false
+      }
+    })
     .when('/login', {
       templateUrl: 'angular-app/login/login.html',
-      //controller: loginController,
+      controller: userloginController,
       controllerAs: 'vm',
       access: {
         restricted: false
@@ -50,9 +86,25 @@ function config($httpProvider, $routeProvider, $locationProvider) {
         restricted: true
       }
     })
+    .when('/contactUs', {
+      templateUrl: 'angular-app/contact_us/contact_us.html',
+      controller: contactController,
+      controllerAs: 'vm',
+      access: {
+        restricted: false
+      }
+    })
     .when('/scrape', {
       templateUrl: 'angular-app/scrape/scrape.html',
       controller: Scrapecontroller,
+      controllerAs: 'vm',
+      access: {
+        restricted: true
+      }
+    })
+    .when('/scrape_url', {
+      templateUrl: 'angular-app/scrape/scrape_url.html',
+      controller: Scrapecontroller_url,
       controllerAs: 'vm',
       access: {
         restricted: true
@@ -74,6 +126,15 @@ function config($httpProvider, $routeProvider, $locationProvider) {
         restricted: true
       }
     })
+    .when('/final_store', {
+      templateUrl: 'angular-app/final_store/final_store.html',
+      controller: deploycontroller,
+      controllerAs: 'vm',
+      access: {
+        restricted: true
+      }
+    })
+    
     .otherwise({
       redirectTo: '/'
     });
@@ -82,8 +143,19 @@ function config($httpProvider, $routeProvider, $locationProvider) {
 function run($rootScope, $location, $window, AuthFactory) {
   $rootScope.$on('$routeChangeStart', function(event, nextRoute, currentRoute) {
     if (nextRoute.access !== undefined && nextRoute.access.restricted && !$window.sessionStorage.token && !AuthFactory.isLoggedIn) {
-      event.preventDefault();
-      $location.path('/');
+      //event.preventDefault();
+      $location.path('/home');
+     /* window.history.forward();*/
+    }
+    if(nextRoute.access.restricted === false  && AuthFactory.isLoggedIn){
+      //event.preventDefault();
+      //$location.path('/login');
+      $location.path('/dashboard');
+      /*$location.path('/store');
+      $location.path('/infostore');
+      $location.path('/final_store');
+      $location.path('/profile');
+      $location.path('/scrape');*/
     }
   });
 }

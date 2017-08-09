@@ -1,9 +1,9 @@
-angular.module('meanhotel').controller('infocontroller', infocontroller);
+angular.module('meanchat').controller('infocontroller', infocontroller);
 
 function infocontroller($http, $scope, $location, $window, UserDataFactory) {
   var vm = this;
   $scope.test = false;
-
+  $scope.popup = false;
   vm.personal = function() {
 
   	/*UserDataFactory.usercreds().then(function(response) {
@@ -15,8 +15,9 @@ function infocontroller($http, $scope, $location, $window, UserDataFactory) {
 /*var username = satish@intellisofttech.com;
     var password = d@tam0rphix@123;
     var token = jwt.sign({ username: user.username}, 's3cr3t', { expiresIn: 3600 });*/
-    var $popup=$window.open("https://www.ibmwatsonconversation.com/us-south/a1400cf5-cf1d-4635-a934-de5676be33d5/login?username=satish@intellisofttech.com&password=d@tam0rphix@123", "popup","_blank", ",toolbar=no,location=no,directories=no,status=no,menub ar=no,scrollbar=no,resizable=no,copyhistory=yes,width=600,height=400,status=yes, toolbar=no, menubar=no, location=no, addressbar=no, left=10,top=150");
-    
+    /*var $popup=$window.open("https://www.ibmwatsonconversation.com/us-south/a1400cf5-cf1d-4635-a934-de5676be33d5/login?username=satish@intellisofttech.com&password=d@tam0rphix@123", "popup","_blank", ",toolbar=no,location=no,directories=no,status=no,menub ar=no,scrollbar=no,resizable=no,copyhistory=yes,width=600,height=400,status=yes, toolbar=no, menubar=no, location=no, addressbar=no, left=10,top=150");*/
+    //var $popup=$window.open("https://dashboard.motion.ai/bots/59375?inputEmail=mekapotulamanoj5674@gmail.com&inputPassword=9030526282", "popup","_blank", ",toolbar=no,location=no,directories=no,status=no,menub ar=no,scrollbar=no,resizable=no,copyhistory=yes,width=600,height=400,status=yes, toolbar=no, menubar=no, location=no, addressbar=no, left=10,top=150");
+        
     //var $popup=$window.open("https://www.ibmwatsonconversation.com/us-south/a1400cf5-cf1d-4635-a934-de5676be33d5/workspaces?bluemixSignInButton=vm.login()&username=satish%40intellisofttech.com&password=d%40tam0rphix%40123", "popup", "width=800,height=600,left=100,top=150");
     
 
@@ -56,7 +57,8 @@ conversation.message({
     console.log(JSON.stringify(response, null, 2));
 });*/
 
-$scope.test = true;
+  //$scope.test = true;
+  $scope.popup = true;
 
   }
   /*vm.add = function() {
@@ -73,45 +75,78 @@ $scope.test = true;
 }*/
 
 
-$scope.fileContent = '';
-    $scope.fileSize = 0;
-    $scope.fileName = '';
-    $scope.submit = function () {
-      var file = document.getElementById("myFileInput").files[0];
-      var content;
+  $scope.fileContent = '';
+  $scope.fileSize = 0;
+  $scope.fileName = '';
+  /*$scope.submit = function () {
+    var file = document.getElementById("myFileInput").files[0];
+    var content;
       
-      if (file) {
-        var aReader = new FileReader();
-        aReader.readAsText(file, "UTF-8");
-        aReader.onload = function (evt) {
+    if (file) {
+      var filename = file.name;
+        var ext = getExtension(filename);
+        if(ext==='json'){
+          vm.error = '';
+          var aReader = new FileReader();
+          aReader.readAsText(file, "UTF-8");
+          aReader.onload = function (evt) {
             content= aReader.result;
             $scope.fileContent = content; 
             $scope.fileName = document.getElementById("myFileInput").files[0].name;
             $scope.fileSize = document.getElementById("myFileInput").files[0].size;
             var user = {
-      personal_banking: content
-    };
+              personal_banking: content
+            };
             $http.post('/api/users/json', user).then(function(result) {
-        console.log(result);
-        console.log("done");
-        vm.message = 'Successfully Uploaded...Please Go and Select Type Of Bot Service You Need in Bot Store....!!!';
-        vm.error = '';
-        //$location.path('/store');
-      }).catch(function(error) {
-      console.log(error);
+            console.log(result);
+            console.log("done");
+            vm.message = 'Successfully Uploaded...Please Go and Select Type Of Bot Service You Need in Bot Store....!!!';
+            vm.error = '';
+            $location.path('/final_store');
+            }).catch(function(error) {
+
+              console.log(error);
     
-    });
+            });
         };
         aReader.onerror = function (evt) {
             $scope.fileContent = "error";
         };
+        }
+        else
+        {
+          vm.error='Please Upload JSON File Only.';
+        }
       }
+      else{
+        vm.error='Please Upload File.'
+      }
+
+    
+
       //console.log(content);
       
     //console.log(personal_banking);
       
 
 
+    }*/
+ /* function getExtension(filename) {
+        var parts = filename.split('.');
+        return parts[parts.length - 1];
+    }*/
+
+
+    $scope.save = function () {
+      //$('#myFrame').remove();
+      //$scope.popup = false;
+      document.getElementById('module_script').style.display='block';
+    }
+
+    vm.submit_script = function () {
+      //$('#myFrame').remove();
+      $scope.popup = false;
+      document.getElementById('module_script').style.display='none';
     }
 
 }

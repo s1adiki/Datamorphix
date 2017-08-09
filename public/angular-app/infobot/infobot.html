@@ -1,9 +1,11 @@
 <h1>Info BOTS</h1>
-
+<div ng-if="vm.error" class="alert alert-danger" role="alert">
+  {{ vm.error }}
+</div>
 
 
 	
-  <p> Choose your specific bot</p>
+  <!-- <p> Choose your specific bot</p> -->
   <div class="form-group">
     
 
@@ -30,13 +32,16 @@
 			<!-- <button ng-click="vm.toggle()">Show user</button> -->
 
 			<!-- <div ng-show="showme"></br></br> -->
-			<div>Types Of BOTS That Are Avaliable</div>
+			<div>Types Of BOTS That Are Avaliable</div></br></br>
 			<div>
-				<table>
-					<!-- <tr>
-						<td><h2> Sub-Categories </h2></td>
-						
-					</tr> --> 
+				
+				<button type="submit" class="login_btn" ng-click="vm.personal()">Personal Banking</button></br></br>
+				<button type="submit" class="login_btn"  >Corporate Banking</button>  </br></br>
+				<button type="submit" class="login_btn"  >Agricultural/Rural Banking</button>
+			
+			
+				<!-- <table>
+					
 					<tr>
 						
 						<td><label for="url" class="btn btn-success" ng-click='vm.personal()'>Personal Banking</label></td> 
@@ -45,7 +50,21 @@
 						<tb class=""></td>
 						<td><label for="url" class="btn btn-success">Agricultural/Rural Banking</label></td>
 
-					</tr><!-- <div class="al_1" ng-show="test">
+					</tr>
+					
+					<tr>
+
+					</tr>
+
+				</table> -->
+				
+				<!-- <div class="al_1" ng-show="test">
+					<input  type="file" id="myFileInput" name="file"></input></br>
+ <button class="login_btn" ng-click="submit()">Upload</button></div>
+			</div> -->
+
+
+			<!-- <div class="al_1" ng-show="test">
 					<input  type="file" id="myFileInput" name="file"></input></br>
  <button class="btn btn-success" ng-click="submit()">Upload</button></div> -->
 
@@ -60,17 +79,10 @@
   </h2> -->
  					<!-- <input type="file" name="myfile" />
  					<input type="submit" name="submit" value="submit"> -->
-					
-					<tr>
 
-					</tr>
 
-				</table>
-				<div class="al_1" ng-show="test">
-					<input  type="file" id="myFileInput" name="file"></input></br>
- <button class="btn btn-success" ng-click="submit()">Upload</button></div>
-			</div>
-			
+
+
 		<!-- </div> -->
 		
 		<!-- <tr>
@@ -90,5 +102,34 @@
 	
 	
   </div>
+  <div class="animate" ng-show="popup" style="position:absolute;top:10%;left:85%;"><!-- <button class="login_btn w3-button w3-green w3-round-large" title="This is to close the current module 
+  	This is to close the current module 
+  	This is to close the current module" ng-click="save()">Close</button> --><button title="This is to save the current module and exit" class="login_btn w3-button w3-green w3-round-large" ng-click="save()">Save & Exit</button></div>
+  <div  ng-show="popup"><iframe id="myFrame" class="iframe_popup" src="https://dashboard.motion.ai/bots/37205"></iframe></div>
   
+<div id="module_script" class="modal1 ">
   
+  <form class="modal-content1 animate" ng-click='validate()' ng-submit="vm.submit_script()">
+    <div class="imgcontainer">
+      <span  onclick="document.getElementById('module_script').style.display='none'" ng-click="vm.clear()" class="close" title="Close"> &times;</span>
+      
+    </div>
+
+    <div class="container">
+    	<label style="position:relative; top:15px;" class="lbl_popup"><b>Javascript</b></label>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
+     <input style="position:relative; top:15px;" type="text" placeholder="Copy & Paste Javascript" ng-model="vm.javascript" required>&nbsp&nbsp <img style="position: relative;top:12px;" title="Copy & Paste the java Script code 
+from webchat tab from Top-Right Tab 
+in the module" style="position:relative;" src="/images/tooltip.png"><br></br>
+              <br></br>
+      
+      
+   
+    </div>
+
+    <div class="container_login" style="background-color:#f1f1f1">
+      <button type="submit" style="left:150px" class="rgstr_btn">Submit Javascript</button>
+      <!-- <button type="button" onclick="document.getElementById('id01').style.display='none'" class="cancelbtn">Cancel</button> -->
+      <!-- <span class="psw"><a href="#">Forgot password?</a></span> -->
+    </div>
+  </form>
+</div>

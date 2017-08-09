@@ -1,11 +1,70 @@
-<!-- <form ng-if="!vm.isLoggedIn()" class="navbar-form navbar-right" role="login" ng-submit="vm.login()" ng-init="vm.init()">
-	<div class="form-group" ng-class="{'has-error': vm.error}">
+<!-- <form  class="navbar-form navbar-right" role="login" ng-submit="vm.login()">
+	<div class="form-group" >
 		<input type="text" class="form-control input-sm" placeholder="Username" ng-model="vm.username" autocapitalize="none">
 	</div>
 	<br><br>
-	<div class="form-group" ng-class="{'has-error': vm.error}">
+	<div class="form-group" >
   		<input type="password" class="form-control input-sm" placeholder="Password" ng-model="vm.password" autocapitalize="none">
 	</div>
 	<br><br>
 	<button type="submit" class="btn btn-sm btn-success">Login</button>
+	<div ng-if="vm.error" class="alert alert-danger" role="alert">
+  {{ vm.error }}
+</div>
 </form> -->
+
+
+<!-- <button onclick="document.getElementById('id01').style.display='block'" style="width:auto;">Login</button>
+
+<div id="id01" class="modal">
+  
+  <form class="modal-content animate" ng-submit="vm.login()">
+    <div class="imgcontainer">
+      <span onclick="document.getElementById('id01').style.display='none'" class="close" title="Close Modal">&times;</span>
+      
+    </div>
+
+    <div class="container">
+      <label class="lbl_popup"><b>Username</b></label>
+      <input type="text" placeholder="Enter Username" placeholder="Username" ng-model="vm.username" required><br></br>
+      <span></span>
+      <label class="lbl_popup"><b>Password</b></label>
+      <input type="password" placeholder="Enter Password" placeholder="Password" ng-model="vm.password" required><br></br>
+      <div>
+        
+      <button type="submit" class="btn btn-success" style="position: relative;left: 90px;">Login</button>
+      <!-- <input type="checkbox" checked="checked"> Remember me
+      <span class="psw"><a href="#">Forgot password?</a></span></div>
+    </div>
+
+    <!-- <div class="container_login" style="background-color:#f1f1f1">
+      <button type="button" onclick="document.getElementById('id01').style.display='none'" class="cancelbtn">Cancel</button>
+      <span class="psw">Forgot <a href="#">password?</a></span>
+    </div>
+  </form>
+</div>
+
+ --> 
+<div style="border:2px;position: relative;padding-left: 325px;padding-top:100px;">
+ <h1>Login</h1></br></br>
+<div ng-if="vm.message" class="alert alert-success" role="alert">
+  <p>{{ vm.message }}</p>
+</div>
+<div ng-if="vm.error" class="alert alert-danger" role="alert">
+  {{ vm.error }}
+</div>
+<form ng-hide="vm.message"  ng-submit="vm.login()" name="register">
+ <div>
+
+  <div class="form-group">
+    <label for="username" class='lbl_rgstr'>Username</label>
+    <input type="text" class="form-control" id="username" placeholder="Username" ng-model="vm.username" autocapitalize="none" required>
+  </div>
+  <div class="form-group">
+    <label for="password" class='lbl_rgstr'>Password</label>
+    <input type="password" class="form-control" id="password" placeholder="Password" ng-model="vm.password" autocapitalize="none" required>
+  </div>
+  <button type="submit" class="rgstr_btn">Login</button>
+  </div>
+  </form>
+</div>

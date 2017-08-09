@@ -1,4 +1,4 @@
-angular.module('meanhotel').directive('mhNavigation', mhNavigation);
+angular.module('meanchat').directive('mhNavigation', mhNavigation);
 
 function mhNavigation() {
   return {

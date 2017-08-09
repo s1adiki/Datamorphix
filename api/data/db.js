@@ -1,5 +1,5 @@
 var mongoose = require('mongoose');
-var dburl = 'mongodb://localhost:27017/meanhotel';
+var dburl = 'mongodb://localhost:27017/meanchat';
 var retry = null;
 mongoose.connect(dburl);
 
@@ -43,5 +43,6 @@ process.on('SIGTERM', function() {
 });
 
 // BRING IN YOUR SCHEMAS & MODELS
-require('./hotels.model');
+/*require('./hotels.model');*/
 require('./users.model');
+require('./services.model');
