@@ -30,13 +30,20 @@
         <li id="2"><a href="">--Coming--</a></li>
     </ul> -->
 </div></br></br>
+<div class="input-group-btn" style="width: 220px;" id="select4_integration_cust">
+    <button type="button" class="btn btn-default " style="border-radius:5px;" ng-click="vm.show_cust_Integration_mngmnt()" data-toggle="" aria-expanded="false"><span class="">Customer Integration</span> <span class="fa fa-caret-right" style="position:absolute;top:10px; right:20px;"></span></button>
+    <!-- <ul class="dropdown-menu option" style="width: 210px; left:177px;top:8px; " role="menu">
+        <li id="1" ><a href="">--Coming--</a></li>
+        <li id="2"><a href="">--Coming--</a></li>
+    </ul> -->
+</div></br></br>
 
 </div>
 
 
-<div  id="bot_mngmnt_overall" ng-init = "vm.admin_dashboard()">
+<div  id="bot_mngmnt_overall" ng-show="bot_mngmnt_overall" ng-init = "vm.admin_dashboard()" >
 
-<div id= "bot_mngmnt_html_overall">
+<div id= "bot_mngmnt_html_overall" >
   <!-- <label style="position: relative;height: 115px;left: 420px;">Info BOT</label>
   <img src="/images/chatbot_1.jpg" style="position: relative;height: 115px;left: 320px;top: 85px;">
   <button type="submit" class="rgstr_btn" ng-click="vm.test_bot()" style="position: relative;top: 185px;left: 160px;">Test</button>  <button type="submit" class="rgstr_btn" style="position: relative;top: 185px;left: 160px;" ng-click="vm.deploy_bot()">Deploy</button>
@@ -87,7 +94,7 @@
     <label for="number" class='lbl_rgstr' >Department</label>
     <input type="text" class="form-control" id="Department" placeholder="Department" ng-model="vm.Department" autocapitalize="none" required>
   </div>
-    <div class="form-group input-group-btn select" id="select_role_user" >
+    <div class="form-group input-group-btn select" id="select_role_user"style="right: 30px;position: relative;" >
     <label for="Organisation name" class='lbl_rgstr'>Role</label>
     <!-- <input type="text" class="form-control" id="Role" placeholder="Role" ng-model="vm.Role" autocapitalize="none" required> -->
     
@@ -100,6 +107,24 @@
         <li id="5"><a ng-click="vm.change(select_role_user)" href="">Bussiness Analyst</a></li>
     </ul>
 </div>
+  <div class="form-group" >
+    <label for="number" class='lbl_rgstr' >Start Date</label>
+    <script src="http://code.jquery.com/ui/1.10.1/jquery-ui.js"></script>
+
+<script>   
+    $(function() {
+         $( "#calendar" ).datepicker();   
+    }); 
+</script>
+
+<input type="date" id="calendar_start"style="border-radius:5px;" ng-model="vm.cal_startdate">
+    <!-- <input type="text" class="form-control" id="Department" placeholder="Department" ng-model="vm.Department" autocapitalize="none" required> -->
+  </div>
+    <div class="form-group"  >
+    <label for="number" class='lbl_rgstr' >End Date</label>
+    <input type="date" id="calendar_end"style="border-radius:5px;" ng-model="vm.cal_enddate">
+    <!-- <input type="text" class="form-control" id="Department" placeholder="Department" ng-model="vm.Department" autocapitalize="none" required> -->
+  </div>
   
       <div class="form-group">
     <label for="Organisation name" class='lbl_rgstr'>Manager ID</label>
@@ -107,7 +132,7 @@
   </div>
 </br>
     <div class="form-group">
-    <label for="Type Of Bot" class='lbl_rgstr' style="position:absolute;">Type Of Bot Required</label>
+    <label for="Type Of Bot" class='lbl_rgstr' style="position:absolute;">Type Of Bot</label>
 
 <div style="left:200px;">
       <label class="checkbox" style="font-size:16px;position: relative; left: 40%;"><input type="checkbox" ng-model="vm.info_chk" ng-change="vm.bot_type_info(vm.info_chk)">Information BOT</label></br>
@@ -190,23 +215,23 @@
     <label for="username" class='lbl_rgstr'>Last Name</label>
     <input type="text" class="form-control" id="lastname" placeholder="Last Name" ng-model="vm.lastname_edit" autocapitalize="none" required>
   </div>
-  <div class="form-group" >
-    <label for="email" class='lbl_rgstr'>E-Mail</label>
+  <div class="form-group"style="position: relative;left: 30px;" >
+    <label for="email" class='lbl_rgstr' >E-Mail</label>
     <input type="email" class="form-control" id="email1" placeholder="E-Mail" ng-model="vm.emAil1_edit" autocapitalize="none" required>
   </div>
   <!-- <div class="form-group" style="right: 30px;position: relative;">
     <label for="password-repeat" class='lbl_rgstr'>Middle Name</label>
     <input type="password" class="form-control" id="middlename" placeholder="Middle Name" ng-model="vm.middlename" autocapitalize="none">
   </div> -->
-  <div class="form-group" >
+  <div class="form-group" style="position: relative;left: 30px;">
     <label for="empid" class='lbl_rgstr'>Employee ID</label>
     <input type="text" class="form-control" id="empId" placeholder="Employee ID" ng-readonly="vm.empId_edit" ng-model="vm.empId_edit" autocapitalize="none" required>
   </div>
-  <div class="form-group"  >
+  <div class="form-group"  style="position: relative;left: 30px;">
     <label for="number" class='lbl_rgstr' >Department</label>
     <input type="text" class="form-control" id="Department" placeholder="Department" ng-model="vm.Department_edit" autocapitalize="none" required>
   </div>
-    <div class="form-group input-group-btn select" id="select_role_user_edit" >
+    <div class="form-group input-group-btn select" id="select_role_user_edit" style="position: relative;left: 30px;">
     <label for="Organisation name" class='lbl_rgstr'>Role</label>
     <!-- <input type="text" class="form-control" id="Role" placeholder="Role" ng-model="vm.Role" autocapitalize="none" required> -->
     
@@ -219,12 +244,12 @@
         <li id="5"><a ng-click="vm.change(select_role_user_edit)" href="">Bussiness Analyst</a></li>
     </ul>
 </div>
-      <div class="form-group">
-    <label for="Organisation name" class='lbl_rgstr'>Manager ID</label>
+      <div class="form-group" style="position: relative;left: 30px;">
+    <label for="Organisation name" class='lbl_rgstr'>Customer ID</label>
     <input type="text" class="form-control" id="manager_ID" placeholder="Manager ID" ng-model="vm.manager_ID_edit" autocapitalize="none" required>
   </div>
 </br>
-    <div class="form-group">
+    <div class="form-group" style="position: relative;left: 30px;">
     <label for="Type Of Bot" class='lbl_rgstr' style="position:absolute;">Type Of Bot Required</label>
 
 <div style="left:200px;">
@@ -393,7 +418,7 @@
 
 
 
-  <div class="form-group" style="position: relative;left: 30px;">
+  <div class="form-group" style="position: relative;">
     <label for="enterpriseIP" class='lbl_rgstr'>Enterprise Host IP Address</label>
     <input type="text_register" class="form-control" id="enterpriseIP" ng-show="read_inti" placeholder="Domain IP Address" ng-model="vm.enterpriseIP" autocapitalize="none" required>
     <input type="text_register" class="form-control" id="enterpriseIP1" ng-show="readwrite_inti" placeholder="Domain IP Address" ng-readonly="vm.enterpriseIP1" ng-model="vm.enterpriseIP1" autocapitalize="none" required>
@@ -425,3 +450,52 @@
 <button type="submit" ng-click="vm.cancel_integtn()" ng-show="cancel" class="rgstr_btn">Cancel</button></br>
 </form>
 </div></br>
+
+
+<div ng-show="cust_user" style="position:relative;right:20px;left:35%;width:65%">
+</br></br></br>
+<form  ng-submit="" name="cust">
+ 
+
+  <div class="form-group"  style="right: 30px;position: relative;">
+    <label for="username" class='lbl_rgstr'>Customer Username <!-- <f style="color:red">*</f> --></label>
+    <input type="text" class="form-control" id="firstname" placeholder="Customer ID" ng-model="vm.cust_usrname" autocapitalize="none" required>
+  </div>
+   <div class="form-group">
+    <label for="Type Of Bot" class='lbl_rgstr' style="position:absolute;left:0px;">Type Of Bot</label>
+  <div class="form-group">
+      <label class="checkbox" style="font-size:16px;position: relative; left: 30%;"><input type="checkbox" ng-checked="cust_s1" ng-model="vm.cust_chk_edit1" ng-change="vm.bot_type_info_cust(vm.cust_chk_edit1)">Information BOT</label></br>
+    
+     <label class="checkbox" style="font-size:16px; position: relative; left: 30%;"><input type="checkbox" ng-checked="cust_s2" ng-model="vm.cust_chk_edit2" ng-change="vm.bot_type_service_cust(vm.cust_chk_edit2)">Service BOT</label> </br>
+     <label class="checkbox" style="font-size:16px; position: relative; left: 30%;"><input type="checkbox" ng-checked="cust_s3" ng-model="vm.cust_chk_edit3" ng-change="vm.bot_type_help_cust(vm.cust_chk_edit3)">Custom BOT</label>
+</div></div>
+  <div class="form-group"  style="right: 30px;position: relative;">
+    <label for="username" class='lbl_rgstr'>Bot Name <!-- <f style="color:red">*</f> --></label>
+    <input type="text" class="form-control" id="firstname" placeholder="Bot Name" ng-model="vm.cust_usrname_bot_name" autocapitalize="none" required>
+  </div>
+
+  <div class="form-group" style="right: 30px;position: relative;">
+    <label for="username" class='lbl_rgstr'>Script</label>
+    <!-- <input type="text" class="form-control" id="lastname" placeholder="Last Name" ng-model="vm.lastname" autocapitalize="none" required> -->
+    <textarea rows="5" type="text"  name="Script"  required="required" ng-model="vm.MesSage_script" maxlength="1000" style="
+    border-radius: 5px;
+    width: 600px;"></textarea>
+  </div>
+  <button type="submit" ng-click="vm.submit_script_final_script()" class="rgstr_btn">Submit</button>
+</form></div></br></br>
+
+<div ng-show="dashboard_user" ng-init="" style="position:relative;left:20%;width:80%">
+
+<div class="form-group">
+
+    <label for="Organisation name" style="position:relative; width:96%; right:40px;height:50px;" class="lbl_rgstr module_btn"><div style="position:absolute;max-width:15%;left:5%;">BOT ID <c style="position: relative;left: 25%;">|</c></div><div style="position:absolute;left: 25%;max-width:15%;">Customer ID<c style="position: relative;left: 63%;">|</c> </div><div style="position:absolute;left: 52%;max-width:15%;">Start date <c style="position: relative;left: 30%;/* top: 0px; */">|</c>  </div><div style="position:absolute;left:71%;max-width:15%;">End date<c style="position: relative;left: 40%;/* top:-23px; */">|</c></div><div style="position:absolute;left: 90%;max-width:15%;">Status   </div> </label>
+    <!-- <input type="text" class="form-control" id="manager_ID" placeholder="Manager ID" ng-model="vm.manager_ID" autocapitalize="none" required> -->
+  </div>
+
+
+  <div class="form-group" ng-bind-html="dashboard_innerhtml" data-html="true"id='dashboard_innerhtml' >
+
+
+   
+    
+  </div></div>

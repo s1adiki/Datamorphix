@@ -78,6 +78,10 @@ router
   .post(ctrlUsers.frget_email);
 
 router
+  .route('/users/frget_email_support')
+  .post(ctrlUsers.frget_email_support);
+
+router
   .route('/users/chng_password_email')
   .post(ctrlUsers.chng_password_email);
 
@@ -98,28 +102,40 @@ router
   .post(ctrlUsers.authenticate,ctrlUsers.store_script);
 
 router
-  .route('/users/store_bot_script')//not implemented in front end
+  .route('/users/register_auth_mngmnt_bot_dashboard')
+  .get(ctrlUsers.register_auth_mngmnt_bot_dashboard);
+
+router
+  .route('/users/store_bot_script')//not implemented in front endstore_bot_script_enduser
   .post(ctrlUsers.authenticate,ctrlUsers.store_bot_script);
+
+router
+  .route('/users/store_bot_script_enduser')//not implemented in front end store_bot_script_enduser_developer
+  .post(ctrlUsers.authenticate,ctrlUsers.store_bot_script_enduser);
+
+router
+  .route('/users/store_bot_script_enduser_developer')//not implemented in front end 
+  .post(ctrlUsers.authenticate,ctrlUsers.store_bot_script_enduser_developer);
+
+router
+  .route('/users/store_bot_script_develop')
+  .post(ctrlUsers.store_bot_script_develop);
 
 router
   .route('/users/get_bot_script_saved')
   .get(ctrlUsers.authenticate,ctrlUsers.get_bot_script_saved);
 
+router
+  .route('/users/get_script_admin')
+  .post(ctrlUsers.authenticate,ctrlUsers.get_script_admin);
 
 router
   .route('/users/get_script')
   .post(ctrlUsers.authenticate,ctrlUsers.get_script);
 
-
 router
   .route('/users/get_script_deploy')
   .post(ctrlUsers.authenticate,ctrlUsers.get_script_deploy);
-
-// User data
-/*router
-  .route('/user/data')
-  .get(ctrlUsers.authenticate,ctrlUsers.getdata)
-*/
 
 router
   .route('/users/scrape')

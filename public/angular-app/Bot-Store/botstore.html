@@ -1,7 +1,10 @@
 <html>
 <head>
 </head>
-<body onload="trigger()">
+<body onload="trigger()"><div ng-if="vm.message" class="alert alert-success" role="alert">
+  <p>{{ vm.message }}</p>
+</div>
+<form ng-hide="vm.message">
 </br></br><div id="test_section" ng-show="test_section">
 <div class="module_btn" ><div style="padding-left:18em ">
 <!-- <button id="get_site_info" type="submit" class="module_btn" ng-click="vm.get_site_info()" style="background-color:#458B00;width:160px;">Get Site Info</button>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp  -->
@@ -184,3 +187,28 @@ Place the below Java-Script data after the <img src="/images/body.png"> In your 
 <div id="mydiv" ng-show="loading">    
     <img src="/images/ajax-loader.gif" class="ajax-loader"/> 
 </div>
+
+
+
+</br></br><div id="test_section_test" ng-show="test_section_test">
+<div class="module_btn" ><div style="padding-left:32em ">
+<!-- <button id="get_site_info" type="submit" class="module_btn" ng-click="vm.get_site_info()" style="background-color:#458B00;width:160px;">Get Site Info</button>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp  -->
+
+<button id="test_nav_modify_1" type="submit" class="module_btn"  style="background-color:#e9970f;width:160px;">Test</button>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp 
+<!-- <button id="deploy_nav_test" type="submit" class="module_btn"ng-click="vm.deploy()" style="background-color:#458B00;width:160px;">Deploy</button>    -->
+</div></div></br>
+
+<div id="load_script_test" ng-show="icon"></div>
+
+<div style="position:absolute;border: 1px solid #ccc;top:300px;height:20%;width:35%;background-color:#202e3b;border-radius:5px;text-align:center"></br>
+<div  class="" style="left:12%;bottom:450px;"  role="alert">
+       <p>{{ 'You can test your BOT here =======>>' }}</p>
+
+    </div></br></br>
+
+<div   style="left:10%;bottom:330px;"  >
+       <!-- <p> Successfully Saved...If you want to know how to Deploy </br>         your bot on your site <a href="" style="color:#df691a" ng-click="vm.deploy()">Click here</a></p> -->
+    </div>
+  </div><button type="submit" ng-click="vm.approved()" class="rgstr_btn" style="position:relative;top:285px;">Approve</button>
+<div ng-init="vm.test()"><iframe id="myFrame_test" class="iframe_test" ></iframe></div></div>
+</form>

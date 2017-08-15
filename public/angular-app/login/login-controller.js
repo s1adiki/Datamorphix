@@ -1,12 +1,13 @@
-angular.module('meanchat').controller('LoginController', LoginController);
+var meanchat=angular.module('meanchat').controller('LoginController', LoginController);
+meanchat.value('sharedProperties', {});
 
 
 
-
-function LoginController($http, $location, $window, $rootScope, UserDataFactory, AuthFactory, jwtHelper) {
+function LoginController($http, $location, $window, $scope, $rootScope, UserDataFactory, AuthFactory, jwtHelper,sharedProperties) {
   var vm = this;
   var url_querystring_host = window.location.origin;
   var authEmail_flg = false;
+  var logged_usr;
   /*var query_email=url_querystring.split("=");
   var my_email = query_email[1];*/
 
@@ -23,8 +24,9 @@ function LoginController($http, $location, $window, $rootScope, UserDataFactory,
   };
 
   vm.authEmail = function() {
-    var email_login=$rootScope.user_auth;
-    /*if(email_login === '' || email_login ===undefined){
+    //var email_login=$rootScope.user_auth;
+    var email_login=sharedProperties.usrname;
+/*    if(email_login ===undefined){
       $http.get('/api/users/login').then(function(response) {
         email_login = response.data.username;
         var domain = email_login.split('@')[1];
@@ -38,6 +40,8 @@ function LoginController($http, $location, $window, $rootScope, UserDataFactory,
       });
     }
     else{*/
+      //sharedProperties.usrname = vm.username;
+      var email_login=sharedProperties.usrname;
       var domain = email_login.split('@')[1];
 
       if(domain==='intellisofttech.com' || domain === 'intelliasiasoft.com' || domain === "datamorphix.com" || domain === "admin.com"){
@@ -46,7 +50,7 @@ function LoginController($http, $location, $window, $rootScope, UserDataFactory,
       else{
         return false;
       }
-   /* }*/
+ /*   }*/
   };
 
   vm.login = function() {
@@ -56,7 +60,9 @@ function LoginController($http, $location, $window, $rootScope, UserDataFactory,
     if(!vm.username){
       vm.error='Please Enter Username';
     }
-    $rootScope.usrname = vm.username;
+    //$rootScope.usrname = vm.username;
+    //var usrname ='';
+    sharedProperties.usrname = vm.username;
     if(!vm.username && !vm.password){
       vm.error='Please Enter Username and Password';
     }
@@ -87,16 +93,26 @@ function LoginController($http, $location, $window, $rootScope, UserDataFactory,
       $http.post('/api/users/login', user).then(function(response) {
 
         if (response.data.success) {
+          
           vm.error='';
           $window.sessionStorage.token = response.data.token;
           AuthFactory.isLoggedIn = true;
           var token = $window.sessionStorage.token;
           var decodedToken = jwtHelper.decodeToken(token);
           vm.loggedInUser = decodedToken.username;
+          logged_usr = decodedToken.username;
           document.getElementById('id01').style.display='none';
           //authEmail_flg = true;
-          $location.path('/dashboard');
           $('#mydiv').hide(); 
+          if(logged_usr==='integration@intellisofttech.com'){
+            $location.path('/integration');
+          }
+          else{
+            $location.path('/dashboard');
+          }
+          
+          
+          
           
         }
 
@@ -267,7 +283,7 @@ function LoginController($http, $location, $window, $rootScope, UserDataFactory,
       email:vm.eMail_frgtpswrd
     };
     console.log("1");
-console.log(user);
+    console.log(user);
      $http.post('/api/users/password', user).then(function(result) {
      
           if (result.data){

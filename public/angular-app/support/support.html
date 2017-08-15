@@ -1,0 +1,94 @@
+<div >
+
+<div><h1>Support</h1></div>
+<div ng-if="vm.message" class="alert alert-success" role="alert">
+  <p>{{ vm.message }}</p>
+</div>
+<div ng-if="vm.error" class="alert alert-danger" role="alert">
+  {{ vm.error }}
+</div>
+  <div class="col-md-6 ">
+                    <dl class="dl-horizontal custom" style="color: #fff; margin: 20px">
+</br></br>
+                        <dt>Phone</dt>
+                        <dd>972 756 1212 extn 112</dd></br></br>
+                        <dt>Email</dt>
+                        <dd>datamorphix@intellisofttech.com</dd></br></br>
+                        <dt>Office Address</dt>
+                        <dd>Intellisoft Technologies <br> 1320 Greenway Drive <br> Irving texas, USA <br> 75038</dd>
+                    </dl>
+                </div>
+
+    <div class="col-md-6 " style="padding: 25px; color: #fff; ">
+                      <form ng-init="vm.support_details()">
+    
+
+    <div class="dl-horizontal custom" style="width:900px;">
+
+      <label class='lbl_rgstr' ><b>Name</b></label></br>
+      <input type="text" placeholder="Enter Username" placeholder="Username" style="width:40%" ng-readonly="vm.usrnme_sprt" ng-model="vm.usrnme_sprt" required></br>
+
+      
+      
+      <label class='lbl_rgstr' ><b>E-Mail</b></label></br>
+      <input type="email" placeholder="Enter E-Mail" placeholder="email" style="width:40%" ng-readonly="vm.eMaiLcontact_sprt" ng-model="vm.eMaiLcontact_sprt" required></br>
+
+    <label for="number" class='lbl_rgstr'>Mobile Phone  </label></br>
+    <input type="text"  id="contact" placeholder="Contact Number" style="width:40%" ng-model="vm.contact_sprt" ng-readonly="vm.contact_sprt" autocapitalize="none" required></br>
+ 
+       <div class="form-group">
+    <label for="Type Of Bot" class='lbl_rgstr' style="position:absolute;">Support required:</label>
+  <!-- <div class="dropdown">
+  <button class="dropbtn module_btn" style="width: 200px;">Bot Type  &nbsp&nbsp&nbsp &nbsp&nbsp></a></button>
+  <div class="dropdown-content">
+    <a href="" ng-click="vm.personal()">Information Bot</a>
+    <a href="">Service BOT</a>
+    <a href="">Help BOT</a>
+  </div>
+</div> -->
+<div style="left:200px;">
+      <label class="checkbox" style="font-size:16px;position: relative; left: 35%;"><input type="checkbox" ng-model="vm.info_chk_support" ng-change="vm.bot_type_info_support(vm.info_chk_support)">Information BOT</label></br>
+    
+     <label class="checkbox" style="font-size:16px; position: relative; left: 35%;"><input type="checkbox" ng-model="vm.service_chk_support" ng-change="vm.bot_type_service_support(vm.service_chk_support)">Service BOT</label> </br>
+     <label class="checkbox" style="font-size:16px; position: relative; left: 35%;"><input type="checkbox" ng-model="vm.help_chk_support" ng-change="vm.bot_type_help_support(vm.help_chk_support)">Custom BOT</label>
+</div>
+
+
+
+     </br> <label  class='lbl_rgstr'><b>Message</b></label></br>
+      <textarea rows="5" type="text"  name="message" placeholder="Enter Your Message" required="required" ng-model="vm.MesSage_support" maxlength="1000" style="  border-radius: 5px;width: 400px;"></textarea>
+      </div>
+       <label for="number" class='lbl_rgstr'>Priority</label></br>
+       <div class="input-group-btn select" id="support_select1">   
+ <button type="button" class="btn btn-default dropdown-toggle " style="width:300px;border-radius:5px;" data-toggle="dropdown" aria-expanded="false"><span class="selected">Select Priority</span> <span class="caret"></span></button>
+    <ul class="dropdown-menu option" style="width: 300px;" role="menu">
+        <li id="1"><a ng-click="vm.change_support(support_select1)" href="">Low</a></li>
+        <li id="2"><a ng-click="vm.change_support(support_select1)" href="">Medium</a></li>
+        <li id="3"><a ng-click="vm.change_support(support_select1)" href="">High</a></li>
+       <!--  <li id="4"><a ng-click="vm.change_support(support_select1)" href="">4</a></li>
+        <li id="5"><a ng-click="vm.change_support(support_select1)" href="">5</a></li>            -->
+<!--         <li id="5"><a ng-click="vm.change(contact_select1)" href="">Finance</a></li>
+        <li id="6"><a ng-click="vm.change(contact_select1)" href="">Food & Beverages</a></li>
+        <li id="7"><a ng-click="vm.change(contact_select1)" href="">Health Care</a></li>
+        <li id="8"><a ng-click="vm.change(contact_select1)" href="">Hospitality</a></li>
+        <li id="9"><a ng-click="vm.change(contact_select1)" href="">Telecommunications</a></li>
+        <li id="10"><a ng-click="vm.change(contact_select1)" href="">Others</a></li> -->
+    </ul>
+  </div>
+
+    </div></br>
+
+    <div  >
+      <button type="submit" ng-click="vm.contact_intellisoft_support()" class="send_btn">Send</button><div id="support_sent" style="left: 40%;position: absolute;bottom: 5%;color:#e9970f;"></div>
+
+    </div>
+  </form>
+
+                </div>
+
+
+</div>
+
+<div id="mydiv" ng-show="loading">    
+    <img src="/images/ajax-loader.gif" class="ajax-loader"/> 
+</div>

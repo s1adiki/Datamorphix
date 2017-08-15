@@ -46,7 +46,22 @@ var test_id='';
   vm.viewurl = function(){
     $scope.div_motion=false;
     $scope.scrape_url_initial=true;
-    $('#mydiv').show(); 
+    $('#mydiv').show();
+    $http.get('/api/users/login').then(function(result_usrname) {
+      if(result_usrname){
+        var usr_login=result_usrname.data.username;
+        var domain = usr_login.split('@')[1];
+        if(usr_login==='integration@intellisofttech.com'){
+          $location.path('/integration');
+        }
+
+        }
+
+
+  }).catch(function(error) {
+      
+        console.log(error);
+  }); 
     $http.post('/api/users/scrape').then(function(usrdata) {
       console.log(usrdata);
       console.log(usrdata.data.url);
@@ -111,6 +126,11 @@ var test_id='';
 /*  vm.next = function(){
     $location.path('/store');
   }*/
+
+  vm.next_phase = function(){
+    $scope.scrape_url_initial= false;
+    $scope.div_motion= true;
+  }
 
 
     vm.submiturl = function() {
@@ -346,19 +366,21 @@ $('html, body').animate({
 
     vm.submit_script = function (item1) {
       var div_id = item1.currentTarget.getAttribute("data-id");
-
+      var status_dev=$(select_role_user_status)["0"].children[1].firstChild.innerHTML;
       if(div_id===1||div_id==="1"){
       var user = {
         bot_name: "Information Bot",
         bot_user_name:"Info Bot",
-      bot_script: vm.javascript_info
+        bot_script: vm.javascript_info,
+        bot_status:status_dev
     };
   }
   if(div_id===2||div_id==="2"){
      var user = {
         bot_name: "Service Bot",
         bot_user_name:"Service Bot",
-      bot_script: vm.javascript_service
+        bot_script: vm.javascript_service,
+        bot_status:status_dev
     };
   }
   test_id = user.bot_name;
@@ -539,7 +561,16 @@ vm.test = function() {
 
   }
 
-
+vm.change_status = function(){
+  $(select_role_user_status).on('click','.option li',function(){
+    var i = $(this).parents('.select').attr('id');
+    var v = $(this).children().text();
+    var o = $(this).attr('id');
+    $('#'+i+' .selected').attr('id',o);
+    $('#'+i+' .selected').text(v);
+    //temp_edit_object.bot_help= o;
+});
+}
 
 
 };

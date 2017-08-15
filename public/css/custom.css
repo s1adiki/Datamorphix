@@ -11,6 +11,7 @@
   }
   body > .container {
     padding-top: 90px;
+    scroll:auto;
   }
   .padded {
     padding-top: 30px
@@ -117,6 +118,18 @@ input[type=number_register] {
     background-size:  : border-box;
         border-radius: 5px;
 }
+
+input[type=date] {
+    overflow: auto; 
+    width: 30%;
+    padding: 5px 15px;
+    margin: 8px 0;
+    display: inline-block;
+    border: 1px solid #ccc;
+    background-size:  : border-box;
+        border-radius: 5px;
+}
+
 
 
 input[type=text], input[type=password], input[type=email] {
@@ -550,4 +563,35 @@ font-size : 16px;
     left: 50%;
     
     position: relative;
+}
+
+
+.initSlide{
+    color : #2B3E4F
+}
+
+
+
+.listToSlide {
+    color: aliceblue
+    margin: 1px 0;
+    padding: 0 5px;
+/*     display : none;*/
+}
+.textSlide {
+  display : block;
+  animation-duration: 3s;
+  animation-name: slidein;
+}
+
+@keyframes slidein {
+    from {
+    margin-left: 100%;
+    width: 100%;
+  }
+
+  to {
+    margin-left: 0%;
+    width: 100%;
+  }
 }

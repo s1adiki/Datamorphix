@@ -103,23 +103,17 @@ vm.bot_type_info = function($event) {
     var set_flag = true;
     var email_flag= validateEmail(vm.eMail);
 
-    if(!vm.username){
-      vm.error='Please Enter Username';
-    }
-    if(!vm.username && !vm.password){
-      vm.error='Please Enter Username and Password';
-    }
+
+
     if(!vm.eMail && !vm.password){
       vm.error='Please Enter E-Mail and Password';
     }
     if(!vm.eMail && !vm.passwordRepeat){
       vm.error='Please Enter E-Mail and Repeat-Password';
     }
-    if(!vm.eMail && !vm.username){
-      vm.error='Please Enter Username and E-Mail';
-    }
-    if(!vm.username && !vm.password && !vm.eMail){
-      vm.error='Please Enter Username,Password and E-Mail';
+
+    if(!vm.password && !vm.eMail){
+      vm.error='Please Enter Password and E-Mail';
     }
 
     else if(!vm.password){
@@ -223,7 +217,7 @@ vm.bot_type_info = function($event) {
         $('#mydiv').show();
 
             var user = {
-      username: vm.username,
+      username: vm.eMail,
       password: vm.password,
       email:vm.eMail,
       contact:vm.contact,
@@ -232,25 +226,25 @@ vm.bot_type_info = function($event) {
     };
 
     var user_info = {
-      username: vm.username,
+      username: vm.eMail,
       bot_name:'Information BOT',
       number_instance:getValue_info
     };
 
         var user_service = {
-      username: vm.username,
+      username: vm.eMail,
       bot_name:'Service BOT',
       number_instance:getValue_service      
     };
 
      var user_help = {
-      username: vm.username,
+      username: vm.eMail,
        bot_name:'Help BOT',
       number_instance:getValue_help
     };
 
      var user_email = {
-      username: vm.username,
+      username: vm.eMail,
       email:vm.eMail,
       organization:vm.org_username,
       registered_list:registered_list

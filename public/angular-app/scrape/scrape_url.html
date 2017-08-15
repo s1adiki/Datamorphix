@@ -49,6 +49,7 @@
   </div></br>
   
   <button type="submit" ng-click="vm.submiturl()" class="login_btn">Get Site Info</button>
+  <button type="submit" ng-click="vm.next_phase()" class="login_btn">Skip</button>
   <button type="submit" ng-click="vm.view_old_url()" ng-show="cancel" class="login_btn">Cancel</button>
 </form>
 </div></div>
@@ -76,7 +77,7 @@
 </div>
 
 
-<div class="form-group al_1" ng-show="test">
+<div class="form-group al_1" name ='file' ng-show="test">
           <input  type="file" id="myFileInput" name="file"></input></br>
  <button class="login_btn" ng-click="submit()">Upload</button></div>
 
@@ -183,11 +184,26 @@ in the module" style="position:relative;" src="/images/tooltip.png">
 <input ng-show="popup_service" style="position:relative; top:15px;" type="text" placeholder="Copy & Paste Javascript" ng-model="vm.javascript_service" required>&nbsp&nbsp <img ng-show="popup_service" style="position: relative;top:12px;" title="Copy & Paste the java Script code 
 from webchat tab from Top-Right Tab 
 in the module" style="position:relative;" src="/images/tooltip.png"><br></br>
-              <br></br>
+              
       
       
    
     </div>
+        <div class="form-group input-group-btn select" id="select_role_user_status"style="left: 30px;position: relative;" >
+    <label for="Organisation name" class='lbl_popup' status='width:100px;color:black;'><b>Status</b></label>
+    <!-- <input type="text" class="form-control" id="Role" placeholder="Role" ng-model="vm.Role" autocapitalize="none" required> -->
+    
+    <button type="button" class="btn btn-default dropdown-toggle" style="width: 225px;left: 18px;bottom: 10px;border-radius: 5px;"  data-toggle="dropdown" aria-expanded="false"><span class="selected">Select Category</span> <span class="caret"></span></button>
+    <ul class="dropdown-menu option" style="left: 105px;width: 222px;top: 37px;" role="menu">
+        <li id="1"><a ng-click="vm.change_status(select_role_user_status)" href="">Developing</a></li>
+        <li id="2"><a ng-click="vm.change_status(select_role_user_status)" href="">Integrating</a></li>
+        <li id="3"><a ng-click="vm.change_status(select_role_user_status)" href="">Testing</a></li>
+        <li id="4"><a ng-click="vm.change_status(select_role_user_status)" href="">Deploying</a></li>
+        
+    </ul>
+</div><br><!-- <div><label style="position:relative; top:15px;" class="lbl_popup"><b>Username</b></label>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
+
+<input type="text" class="form-control" style=" border-radius: 5px;;" id="username" placeholder="URL"  ng-model="vm.usr_script_store" autocapitalize="none" required></div> --></br>
 
     <div class="container_login" style="background-color:#f1f1f1">
       <button ng-show="popup_info" type="submit" style="left:150px" class="rgstr_btn" data-id="1"  ng-click="vm.submit_script($event)" >Submit Javascript</button>
@@ -215,7 +231,19 @@ in the module" style="position:relative;" src="/images/tooltip.png">
 from webchat tab from Top-Right Tab 
 in the module" style="position:relative;" src="/images/tooltip.png">
 <br></br>
-              <br></br>
+           <div class="form-group input-group-btn select" id="select_role_user_status"style="left: 30px;position: relative;" >
+    <label for="Organisation name" class='lbl_popup' status='width:100px;color:black;'><b>Status</b></label>
+    <!-- <input type="text" class="form-control" id="Role" placeholder="Role" ng-model="vm.Role" autocapitalize="none" required> -->
+    
+    <button type="button" class="btn btn-default dropdown-toggle" style="width: 225px;left: 18px;bottom: 10px;border-radius: 5px;"  data-toggle="dropdown" aria-expanded="false"><span class="selected">Select Category</span> <span class="caret"></span></button>
+    <ul class="dropdown-menu option" style="left: 105px;width: 222px;top: 37px;" role="menu">
+        <li id="1"><a ng-click="vm.change_status(select_role_user_status)" href="">Developing</a></li>
+        <li id="2"><a ng-click="vm.change_status(select_role_user_status)" href="">Integrating</a></li>
+        <li id="3"><a ng-click="vm.change_status(select_role_user_status)" href="">Testing</a></li>
+        <li id="4"><a ng-click="vm.change_status(select_role_user_status)" href="">Deploying</a></li>
+        
+    </ul>
+</div><br></br>
       
       
    

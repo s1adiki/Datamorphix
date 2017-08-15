@@ -87,6 +87,14 @@ var userBotSavedSchema = new mongoose.Schema({
     type : String,
     required : true
   },
+  bot_status : {
+    type : String
+    
+  },
+  bot_developer : {
+    type : String
+    
+  },
 
   createdOn : {
     type : Date,
@@ -136,8 +144,26 @@ var usermanagementschema = new mongoose.Schema({
     type : String,
     required : true
   },
-  
-
+/*   motion_bot_id_info : {
+    type : String,
+    required : true
+  }, 
+   motion_bot_id_service : {
+    type : String,
+    required : true
+  }, 
+   motion_bot_id_custom : {
+    type : String,
+    required : true
+  },*/
+   start_date : {
+    type : String,
+    required : true
+  },
+   end_date : {
+    type : String,
+    required : true
+  },       
   createdOn : {
     type : Date,
     "default" : Date.now

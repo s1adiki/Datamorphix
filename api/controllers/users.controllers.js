@@ -281,6 +281,44 @@ module.exports.password = function(req, res) {
   });
 };
 
+module.exports.frget_email_support = function(req, res) {
+  console.log('sending e-mail');
+  //var email = req.body.email;
+  let mailOptions={
+    
+    from : 'rockingmanoj5674@gmail.com',
+    to : "mekapotulamanoj5674@gmail.com" ,
+    subject : req.body.subject ,
+    text :'The Customer Mail  : '+ req.body.from +'\nThe Customer Contact  : '+ req.body.contact +'\nIssue Priority  : '+ req.body.Priority +'\nCustomer Message : ' +  req.body.text+'\nNeeds Request On  : ' +  req.body.bot_request
+  }; 
+  console.log(mailOptions);
+  let smtpTransport = nodemailer.createTransport({
+    //service: "Gmail",
+    //host: "smtp.gmail.com",
+    host: 'smtp.gmail.com',
+    port : 465,
+   // port (TLS): 587,
+    secure: true,
+    tls:{rejectUnauthorized:false},
+    //TLS/SSL required: 'yes'
+    auth: {
+        user: "rockingmanoj5674@gmail.com",
+        pass: "9032466393"
+    }
+});
+smtpTransport.sendMail(mailOptions, (error, info) => {
+    if (error) {
+      res.sendStatus(500);
+      //  return console.log(error);
+    }
+    else{
+      res.sendStatus(200);
+    }
+    //console.log(' sent: %s',  info.response);
+      });
+
+smtpTransport.close();
+};
 
 module.exports.frget_email = function(req, res) {
   console.log('sending e-mail');
@@ -309,11 +347,14 @@ module.exports.frget_email = function(req, res) {
 });
 smtpTransport.sendMail(mailOptions, (error, info) => {
     if (error) {
-        return console.log(error);
+      res.sendStatus(500);
+      //  return console.log(error);
     }
-    console.log('Message %s sent: %s', info.messageId, info.response);
+    else{
+      res.sendStatus(200);
+    }
+    //console.log(' sent: %s',  info.response);
       });
-
 
 smtpTransport.close();
 };
@@ -350,7 +391,12 @@ var _addusermngmnt = function (req, res, user) {
     manager_ID : req.body.manager_ID,
     bot_info : req.body.bot_info,
     bot_service : req.body.bot_service,
-    bot_help : req.body.bot_help
+    bot_help : req.body.bot_help,
+    start_date: req.body.start_date,
+    end_date:req.body.end_date
+/*    motion_bot_id_info : req.body.motion_bot_id_info,
+    motion_bot_id_service : req.body.motion_bot_id_service,
+    motion_bot_id_custom : req.body.motion_bot_id_custom*/
   });
 
   user.save(function(err, user) {
@@ -480,11 +526,48 @@ module.exports.register_auth_mngmnt = function(req, res) {
 
 
 
+module.exports.register_auth_mngmnt_bot_dashboard = function(req, res) {
+  //var username = req.user;
+  var username = 'admin@admin.com';
+ // var email = req.body.email;
+  var id ='';
+  var usr_array =[];
 
+User.findOne({
+    username: username
+  }).exec(function(err, user) {
+    if (err) {
+      console.log(err);
+      //res.status(400).json(err);
+    } else {
+      console.log(user);
+      var cnt=user.user_management.length;
+       console.log(cnt);
+       console.log(user.user_management)
+       
+        /*.data(user.user_management);*/
+        /*.json({user.bots_authorized});*/
+
+  for(var i=0;i<cnt;i++){
+    if(user.user_management[i]){
+      usr_array.push(user.user_management[i]);
+         }
+
+  }
+  console.log(usr_array);
+  res
+        .status(200)
+        .json({Array:usr_array, count:cnt});
+
+}
+});
+
+};
 
 
 module.exports.register_auth_mngmnt_bot = function(req, res) {
   var username = req.user;
+  //var username = 'admin@admin.com';
  // var email = req.body.email;
   var id ='';
   var usr_array =[];
@@ -649,10 +732,14 @@ module.exports.chng_password_email = function(req, res) {
 });
 smtpTransport.sendMail(mailOptions, (error, info) => {
     if (error) {
-        return console.log(error);
+      res.sendStatus(500);
+      //  return console.log(error);
     }
-    console.log('Message %s sent: %s', info.messageId, info.response);
-      });
+    else{
+      res.sendStatus(200);
+    }
+    //console.log('sent: %s',  info.response);
+  });
 
 smtpTransport.close();
 
@@ -685,10 +772,14 @@ module.exports.register_email = function(req, res) {
     }
 });
 smtpTransport.sendMail(mailOptions, (error, info) => {
-    if (error) {
-        return console.log(error);
+   if (error) {
+      res.sendStatus(500);
+      //  return console.log(error);
     }
-    console.log('Message %s sent: %s', info.messageId, info.response);
+    else{
+      res.sendStatus(200);
+    }
+    //console.log('sent: %s', info.response);
       });
 
 smtpTransport.close();
@@ -723,9 +814,13 @@ module.exports.register_update_email = function(req, res) {
 });
 smtpTransport.sendMail(mailOptions, (error, info) => {
     if (error) {
-        return console.log(error);
+      res.sendStatus(500);
+      //  return console.log(error);
     }
-    console.log('Message %s sent: %s', info.messageId, info.response);
+    else{
+      res.sendStatus(200);
+    }
+    //console.log('sent: %s',  info.response);
       });
 
 smtpTransport.close();
@@ -738,7 +833,7 @@ module.exports.chng_password = function(req, res) {
   //var username = req.params.username;
   //var username =req.user;
   var email = req.body.email;
-  var password = req.body.old_password;
+  //var password = req.body.old_password;
   var new_password = req.body.password;
 
    User.findOne({
@@ -754,15 +849,15 @@ module.exports.chng_password = function(req, res) {
       }
       else{
 
-      if (bcrypt.compareSync(password, user.password)) {
+/*      if (bcrypt.compareSync(password, user.password)) {
         //console.log('User found', user);
         //var token = jwt.sign({ username: user.username}, 's3cr3t', { expiresIn: 3600 });
-          password = bcrypt.hashSync(new_password, bcrypt.genSaltSync(10));
+          password = bcrypt.hashSync(new_password, bcrypt.genSaltSync(10));*/
   //console.log(username);
  User.update({
     email: email
   //},{ $push: { url: url }}, function(err, user) {
-  },{ password: password }, function(err, user) {
+  },{ password: new_password }, function(err, user) {
     if (err) {
       console.log(err);
       res.status(400).json(err);
@@ -772,9 +867,9 @@ module.exports.chng_password = function(req, res) {
     }
   });
         
-      } else {
+/*      } else {
         res.status(201).json('Unauthorized');
-      }
+      }*/
     }
     }
   });
@@ -927,6 +1022,44 @@ module.exports.get_script = function(req, res) {
     }
   });
  };
+
+
+module.exports.get_script_admin = function(req, res) {
+  var id = req.body.id;
+  console.log(id);
+  //var personal_banking = req.body.personal_banking;
+  //var username= req.user;
+  //console.log('submitting...script');
+  //var url = req.body.url;
+  //console.log(url);
+  //console.log(username);
+
+  /*User.findOne({
+    username: username
+  }).exec(function(err, user) {*/
+  User
+    .findById(id)
+    .select('bots_saved')
+    .exec(function(err, user) {
+    if (err) {
+      console.log(err);
+      res.status(400).json(err);
+    } else {
+      console.log(user)
+      // var test_html = '<html><body>'+user.personal_banking+'</body></html>';
+
+/*  fs.writeFile('test_html.html', test_html, function (err) {
+    if (err) 
+        return console.log(err);
+    });*/
+  
+      //open('test_html.html',"firefox", "__blank");
+      //open('test_html.html',"chrome", "__blank");
+      res.status(200).json(user);
+    }
+  });
+ };
+
 
 
 module.exports.get_script_deploy = function(req, res) {
@@ -1092,11 +1225,43 @@ var _addbotscript = function (req, res, user) {
  // User.update({},{$push: { bots_saved  : { bot_name: req.body.bot_name,   bot_user_name: req.body.bot_user_name,   bot_script : req.body.bot_script  } } });
 
 
-
+console.log(req.body.bot_status);
   user.bots_saved.push({
    bot_name: req.body.bot_name,
    bot_user_name: req.body.bot_user_name,
-   bot_script : req.body.bot_script
+   bot_script : req.body.bot_script,
+   bot_status : req.body.bot_status
+   
+  });
+
+  user.save(function(err, user) {
+    if (err) {
+      res
+        .status(500)
+        .json(err);
+    } else {
+      res
+        .status(200)
+        .json(user.bots_saved);
+    }
+  });
+
+};
+
+
+var _addbotscript_develop = function (req, res, user) {
+  
+  //User.update({},{$pull: { bots_saved  : { bot_name : name } } },{multi: false});
+ // User.update({},{$push: { bots_saved  : { bot_name: req.body.bot_name,   bot_user_name: req.body.bot_user_name,   bot_script : req.body.bot_script  } } });
+
+
+console.log(req.body.bot_status);
+  user.bots_saved.push({
+   bot_name: req.body.bot_name,
+   bot_user_name: req.body.bot_user_name,
+   bot_script : req.body.bot_script,
+   bot_status : req.body.bot_status,
+   bot_developer : req.body.bot_developer
   });
 
   user.save(function(err, user) {
@@ -1236,6 +1401,200 @@ module.exports.edit_user_updated = function(req, res) {
 
 };
 
+module.exports.store_bot_script_develop = function(req, res) {
+
+  var username = req.body.username;
+  var bot_name = req.body.bot_name;
+  var bot_user_name = req.body.bot_user_name;
+  var bot_script = req.body.bot_script;
+  var id ='';
+  var set_flag=true;
+  var name= req.body.bot_name;
+  User.findOne({
+    username: username
+  }).exec(function(err, user) {
+    if (err) {
+      console.log(err);
+
+    } else {
+      if(!user){
+        res
+        .status(201)
+        .json({success:false});
+      }
+      else
+      {
+        id=user._id;
+        console.log(id);
+        var cnt=user.user_management.length;
+        console.log(cnt);
+
+
+        
+
+
+
+  /*  for(var i=0;i<cnt;i++){
+      if(user.user_management[i].email===email){
+        set_flag=false;
+      }
+      
+    }*/
+    for(var i=0;i<user.bots_saved.length;i++){
+      if(user.bots_saved[i].bot_name===bot_name){
+        User.update({username:username},{$pull: { bots_saved  : { bot_name : name } } },{multi: false}).exec(function(err, user1) {
+        console.log(user1);
+      
+        
+      });
+      }
+    }
+      if(set_flag){
+      User
+      .findById(id)
+      .select('bots_saved')
+      .exec(function(err, user) {
+        var response = {
+          status : 200,
+          message : user
+        };
+        if (err) {
+          console.log("Error finding User");
+          response.status = 500;
+          response.message = err;
+        } else if(!user) {
+          console.log("User is not found in database", username);
+          response.status = 404;
+          response.message = {
+            "message" : "User not found " + username
+          };
+        }
+        if (user) {
+           /* if(set_flag){*/
+          _addbotscript_develop(req, res, user);
+        /*}
+        else{
+          res.status(201).json({success: false, message : 'User already taken'});
+        }*/
+        } else {
+          res
+            .status(response.status)
+            .json(response.message);
+        }
+      });
+    }
+  }
+    }
+});
+
+
+
+
+};
+
+module.exports.store_bot_script_enduser = function(req, res) {
+  var username = req.user;
+  var bot_name = req.body.bot_name; 
+  var name= req.body.bot_name;
+  var id ='';
+  User.findOne({
+      username: username
+  }).exec(function(err, user) {
+    id=user._id;
+    for(var i=0;i<user.bots_saved.length;i++){
+      if(user.bots_saved[i].bot_name===bot_name){
+        User.update({username:username},{$pull: { bots_saved  : { bot_name : name } } },{multi: false}).exec(function(err, user1) {
+        console.log(user1);
+        User
+        .findById(id)
+        .select('bots_saved')
+        .exec(function(err, user) {
+          var response = {
+            status : 200,
+            message : user
+          };
+          if (err) {
+            console.log("Error finding User");
+            response.status = 500;
+            response.message = err;
+          } else if(!user) {
+            console.log("User is not found in database", username);
+            response.status = 404;
+            response.message = {
+              "message" : "User not found " + username
+            };
+          }
+          if (user) {
+             /* if(set_flag){*/
+            _addbotscript(req, res, user);
+          /*}
+          else{
+            res.status(201).json({success: false, message : 'User already taken'});
+          }*/
+          } else {
+            res
+              .status(response.status)
+              .json(response.message);
+          }
+        });
+        
+      });
+      }
+    }
+  });
+};
+
+module.exports.store_bot_script_enduser_developer = function(req, res) {
+  var username = req.body.bot_developer;
+  var bot_script = req.body.bot_script; 
+  var name= req.body.bot_script;
+  var id ='';
+  User.findOne({
+      username: username
+  }).exec(function(err, user) {
+    id=user._id;
+    for(var i=0;i<user.bots_saved.length;i++){
+      if(user.bots_saved[i].bot_script===bot_script){
+        User.update({username:username},{$pull: { bots_saved  : { bot_script : name } } },{multi: false}).exec(function(err, user1) {
+        console.log(user1);
+        User
+        .findById(id)
+        .select('bots_saved')
+        .exec(function(err, user) {
+          var response = {
+            status : 200,
+            message : user
+          };
+          if (err) {
+            console.log("Error finding User");
+            response.status = 500;
+            response.message = err;
+          } else if(!user) {
+            console.log("User is not found in database", username);
+            response.status = 404;
+            response.message = {
+              "message" : "User not found " + username
+            };
+          }
+          if (user) {
+             /* if(set_flag){*/
+            _addbotscript(req, res, user);
+          /*}
+          else{
+            res.status(201).json({success: false, message : 'User already taken'});
+          }*/
+          } else {
+            res
+              .status(response.status)
+              .json(response.message);
+          }
+        });
+        
+      });
+      }
+    }
+  });
+};
 
 
 
@@ -1245,6 +1604,7 @@ module.exports.store_bot_script = function(req, res) {
   var bot_name = req.body.bot_name;
   var bot_user_name = req.body.bot_user_name;
   var bot_script = req.body.bot_script;
+  var bot_status = req.body.bot_status;
   var id ='';
   var set_flag=true;
   var name= req.body.bot_name;
@@ -1438,14 +1798,15 @@ module.exports.admin_dashboard = function(req, res) {
 module.exports.admin_dashboard_getscript = function(req, res) {
   //var username = req.params.username;
   var usr_array_dash=[];
+  var usr_array_dash_userid = [];
   var total_count= 0;
   var flg_res = false;
   var data = req.body.data_user;
   console.log('1');
   console.log(data);
-  for(var i=0;i<data.length;i++){
+  //for(var i=0;i<data.length;i++){
     User.findOne({
-      username: data[i]
+      username: data
     }).exec(function(err, user) {
       if (err) {
         console.log(err);
@@ -1465,24 +1826,26 @@ module.exports.admin_dashboard_getscript = function(req, res) {
         for(var i=0;i<cnt;i++){
           if(user.bots_saved[i]){
             //console.log(user.bots_saved[i]);
+            usr_array_dash_userid.push(user._id);
             usr_array_dash.push(user.bots_saved[i]);
             total_count++;
           }
         }
         console.log(total_count);
         console.log(usr_array_dash);
+        res.status(200).json({data:usr_array_dash,id:usr_array_dash_userid});
  
 
       }
   
     });
-    if(i===(data.length-1)){
+    /*if(i===(data.length-1)){
       flg_res = true;
-    }
-  }
-  if(flg_res===true){
-    res.status(200).json({data:usr_array_dash});
-  }
+    }*/
+  //}
+  /*if(flg_res===true){*/
+   
+  /*}*/
 
 };
 

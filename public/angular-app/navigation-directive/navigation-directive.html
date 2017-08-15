@@ -19,10 +19,12 @@
        <li ng-if="vm.isLoggedIn()" onclick="document.getElementById('id01').style.display='none'; document.getElementById('id02').style.display='none'"><a href="#/dashboard">Home</a></li>
        
       <!--  <li ng-class="vm.isActiveTab('register')" ng-if="!vm.isLoggedIn()"><a href="#/register">Register</a></li> -->
-      <li  ng-if="!vm.isLoggedIn()" onclick="document.getElementById('id02').style.display='none'; document.getElementById('id01').style.display='none'" class="hover"><a href="#/contactUs">Contact Us</a></li>
+      
+      </li>
 
 
-      <li  ng-if="!vm.isLoggedIn()" onclick="document.getElementById('id01').style.display='none'; document.getElementById('id02').style.display='none'" class="hover"><a href="#/register">Subscription</a></li></ul>
+      <li  ng-if="!vm.isLoggedIn()" onclick="document.getElementById('id01').style.display='none'; document.getElementById('id02').style.display='none'" class="hover"><a href="#/register">Subscription</a></li>
+      <li  ng-if="!vm.isLoggedIn()" onclick="document.getElementById('id01').style.display='none'; document.getElementById('id02').style.display='none'" class="hover"><a href="#/plan">Plans</a></li></ul>
        <!-- <li ng-class="vm.isActiveTab('login')"  ng-if="!vm.isLoggedIn()"><a href="#/login">Login</a></li> -->
        <ul class="nav navbar-nav navbar-right"><li ng-if="!vm.isLoggedIn()" onclick="document.getElementById('id02').style.display='none'; document.getElementById('id01').style.display='none'" class="hover"><a href="#/login">Login</a></li></ul>
        
@@ -52,7 +54,9 @@
        <!-- <li ng-class="vm.isActiveTab('login')" ng-if="vm.isLoggedIn()" onclick="document.getElementById('id01').style.display='block'"><a href="#/login">Login</a></li> -->
        <!-- <li ng-class="vm.isActiveTab('login')" ng-if="!vm.isLoggedIn()"><a href="#/login">Login</a></li> -->
        <ul class="nav navbar-nav"><li ng-class="vm.isActiveTab('profile')" ng-if="vm.isLoggedIn()" ><a href="#/profile">Profile</a></li>
-       <li ng-class="vm.isActiveTab('scrape')" ng-if="vm.isLoggedIn() && vm.authEmail()" ><a href="#/scrape_url"><!-- <button ng-click="vm.botservice()"> -->Bot Service<!-- </button> --></a></li>
+       <li ng-class="vm.isActiveTab('scrape')" ng-if="vm.isLoggedIn() && vm.authEmail()" ><a href="#/scrape_url"><!-- <button ng-click="vm.botservice()"> -->Bot Development<!-- </button> --></a></li>
+       <li  ng-if="!vm.isLoggedIn()" onclick="document.getElementById('id02').style.display='none'; document.getElementById('id01').style.display='none'" class="hover"><a href="#/contactUs">Contact Us</a></li>
+       <li  ng-if="vm.isLoggedIn()" onclick="document.getElementById('id02').style.display='none'; document.getElementById('id01').style.display='none'" class="hover"><a href="#/support">Support</a>
        <!-- <li ng-class="vm.isActiveTab('store')" ng-if="vm.isLoggedIn()"><a href="#/store">Bot Store</a></li> -->
      </ul>
 <!--       <form ng-if="!vm.isLoggedIn()" class="navbar-form navbar-right" role="login" ng-submit="vm.login()">

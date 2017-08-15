@@ -118,9 +118,9 @@ function config($httpProvider, $routeProvider, $locationProvider) {
         restricted: true
       }
     })
-    .when('/infostore', {
-      templateUrl: 'angular-app/infobot/infobot.html',
-      controller: infocontroller,
+    .when('/integration', {
+      templateUrl: 'angular-app/integration/integration.html',
+      controller: integrationcontroller,
       controllerAs: 'vm',
       access: {
         restricted: true
@@ -129,6 +129,30 @@ function config($httpProvider, $routeProvider, $locationProvider) {
     .when('/final_store', {
       templateUrl: 'angular-app/final_store/final_store.html',
       controller: deploycontroller,
+      controllerAs: 'vm',
+      access: {
+        restricted: true
+      }
+    })
+    .when('/forget', {
+      templateUrl: 'angular-app/forget_password/forget_email.html',
+      controller: forgetemailcontroller,
+      controllerAs: 'vm',
+      access: {
+        restricted: false
+      }
+    })
+    .when('/plan', {
+      templateUrl: 'angular-app/plan/plan.html',
+      controller: plancontroller,
+      controllerAs: 'vm',
+      access: {
+        restricted: false
+      }
+    })
+    .when('/support', {
+      templateUrl: 'angular-app/support/support.html',
+      controller: supportcontroller,
       controllerAs: 'vm',
       access: {
         restricted: true

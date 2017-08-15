@@ -20,7 +20,8 @@ module.exports.admin_dashboard_integration = function(req, res) {
 module.exports.admin_dashboard_integration_submit = function(req, res) {
 	Services.create({
     IP_address: req.body.IP_address,
-	services_name:req.body.services_name
+	services_name:req.body.services_name,
+	services_hosted:req.body.services_hosted
   }, function(err, user) {
     if (err) {
       console.log(err);
@@ -33,6 +34,9 @@ module.exports.admin_dashboard_integration_submit = function(req, res) {
   });
 
 };
+
+
+
 
 module.exports.admin_dashboard_integration_ser_hsted = function(req, res) {
 
