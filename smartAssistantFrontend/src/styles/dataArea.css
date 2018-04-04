@@ -1,0 +1,21 @@
+.dataArea{
+    overflow: scroll;
+    width: 95%;
+    margin-top: 2%;
+    margin-left: 1em;
+    z-index: 8388635;
+
+}
+
+table, th, td {
+    border: 1px solid black;
+    border-radius: .3em;
+}
+
+tr{
+    text-align: center;
+}
+
+.tableImg{
+    width: 50%;
+}

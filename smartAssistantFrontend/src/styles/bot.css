@@ -1,0 +1,112 @@
+.Bot-icon{
+    position: fixed;
+    z-index: 16777271;
+    height: 2.5em;
+    width: 2.5em;
+    color: #005A74;
+    bottom: 45%;
+    right: .5%;
+}
+
+.bot{
+    position: fixed;
+    z-index: 16777271;
+    right: .25%;
+    width: 22%;
+    height: 50%;
+    bottom: 0;
+
+}
+
+.headerData{
+    color: #f9f895;
+    border-top-left-radius: .25rem;
+    border-top-right-radius: .25em;
+    background-color: #005A74;
+    height: 9%;
+}
+
+.headerName{
+    padding-top: 2%;
+    padding-left: 2%;
+    float: left;
+}
+
+.headerClose{
+    padding-top: 2%;
+    padding-right: 2%;
+    float: right;
+}
+
+.body{
+    overflow-y: auto;
+    height: 81%;
+    border: .2rem solid #005A74;
+    background-color: white;
+}
+
+
+.requestDiv{
+
+}
+
+.requestMessage{
+    margin-right: .5em;
+    float: right;
+    background-color: #DEEAF2;
+    border-radius: .3em;
+    padding: 0 .5em 0 .5em;
+    max-width: 87%;
+}
+
+.responseDiv{
+
+}
+
+.receivedMessage{
+    margin-left: .5em;
+    float: left;
+    background-color: #DEEAF2;
+    border-radius: .3em;
+    padding: 0 .5em 0 .5em;
+    max-width: 87%;
+}
+
+.messageHeader{
+    color: black;
+}
+
+.messageData{
+    color: black;
+}
+
+.timeDiv{
+    padding: 0 50% 0 50%;
+
+}
+
+.requestTime{
+    color: #999999;
+    font-size: small;
+    text-align: center;
+}
+
+
+.footerChatInput{
+    bottom: .25%;
+    width: 98%;
+    margin-left: 1%;
+    border-radius: .25rem;
+    border: 1px solid rgba(0,0,0,.15);
+    padding: .5rem .75rem;
+    font-size: 1rem;
+    line-height: 1.25;
+}
+
+.footer{
+    background-color: #005A74;
+    height: 20%;
+    border-top: 2px solid #005A74;
+    border-bottom-left-radius: .25rem;
+    border-bottom-right-radius: .25em;
+}
