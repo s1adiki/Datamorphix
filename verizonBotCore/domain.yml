@@ -1,0 +1,108 @@
+slots:
+  email:
+    type: text
+
+intents:
+  - EmailId
+  - Main Menu
+  - Helpful
+  - Not Helpful
+  - Greeting
+  - Bye
+  - Manage Account
+  - Username and Password
+  - Update Contact Information
+  - Request Receipts
+  - Update Billing Information
+  - Phones
+  - Plans
+  - Deals
+  - Smart Phones
+  - Basic Phones
+  - Pre-owned Phones
+  - Unlimited Plus
+  - Unlimited
+  - Limited
+  - Apple Deals
+  - Android Deals
+  - Tablets Deals
+  - Accessories Deals
+
+entities:
+  - email
+
+actions:
+ - utter_EmailId
+ - utter_Main_Menu
+ - utter_Not_Helpful
+ - utter_Helpful
+ - utter_Greeting
+ - utter_Bye
+ - utter_Manage_Account
+ - utter_Username_and_Password
+ - utter_Update_Contact_Information
+ - utter_Request_Receipts
+ - utter_Update_Billing_Information
+ - utter_ Phones
+ - utter_ Plans
+ - utter_Deals
+ - utter_Smart Phones
+ - utter_Basic_Phones
+ - utter_Pre-owned_Phones
+ - utter_Unlimited_Plus
+ - utter_ Unlimited
+ - utter_Limited
+ - utter_Apple_Deals
+ - utter_Android_Deals
+ - utter_Tablets_Deals
+ - utter_Accessories_Deals
+
+templates:
+  utter_EmailId:
+  - text: "Here is your ticket"
+  utter_Main_Menu:
+  - text: "main menu"
+  utter_Helpful:
+  - text: "Helpful"
+  utter_Not_Helpful:
+  - text: "Not Helpful"
+  utter_Greeting:
+  - text: "Hello there"
+  utter_Bye:
+  - text: "Bye"
+  utter_Manage_Account:
+  - text: "I acn help you with that"
+  utter_Username_and_Password:
+  - text: "I can help you with that"
+  utter_Update_Contact_Information:
+  - text: "I can help you with that"
+  utter_Request_Receipts:
+  - text: "I can help you with that"
+  utter_Update_Billing_Information:
+  - text: "I can help you with that"
+  utter_ Phones:
+  - text: "I can help you with that"
+  utter_ Plans:
+  - text: "I can help you with that"
+  utter_Deals:
+  - text: "I can help you with that"
+  utter_Smart Phones:
+  - text: "I can help you with that"
+  utter_Basic_Phones:
+  - text: "I can help you with that"
+  utter_Pre-owned_Phones:
+  - text: "I can help you with that"
+  utter_Unlimited_Plus:
+  - text: "I can help you with that"
+  utter_ Unlimited:
+  - text: "I can help you with that"
+  utter_Limited:
+  - text: "I can help you with that"
+  utter_Apple_Deals:
+  - text: "I can help you with that"
+  utter_Android_Deals:
+  - text: "I can help you with that"
+  utter_Tablets_Deals:
+  - text: "I can help you with that"
+  utter_Accessories_Deals:
+  - text: "I can help you with that"

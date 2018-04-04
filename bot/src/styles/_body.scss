@@ -1,0 +1,46 @@
+$chat-body-color: #FFFFFF;
+$bot-text-bg-color: #d3d2d2;
+$user-text-bg-color: #076BFF;
+$user-text-color: #FFFFFF;
+
+
+$height: 100vh;
+
+.chat-container {
+  height: $height;
+
+  .chat-body {
+    background-color: $chat-body-color;
+    overflow-y: scroll;
+    overflow-x: hidden;
+    height: $height * .9;
+    font-family:Arial, Helvetica, sans-serif;
+
+    p.chat-body__botMsg {
+      background-color: $bot-text-bg-color;
+      margin: 0;
+      padding-top: 0.1em;
+      padding-bottom: 0.1em;
+    }
+
+    p.chat-body__userMsg{
+      background-color: $user-text-bg-color;
+      color: $user-text-color;
+      margin: 0;
+      padding-top: 0.1em;
+      padding-bottom: 0.1em;
+    }
+  }
+
+
+  .chat-footer {
+    height: $height * .1;
+    background-color: $chat-body-color;
+    input {
+      background-color: $chat-body-color;
+    }
+    img{
+      height: 2.5em;
+    }
+  }
+}

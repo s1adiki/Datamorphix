@@ -1,0 +1,99 @@
+$chat-body-color: #FFFFFF;
+$bot-text-bg-color: #d3d2d2;
+$user-text-bg-color: #076BFF;
+$user-text-color: #FFFFFF;
+
+
+$height: 100vh;
+
+.chat-container {
+  height: $height;
+
+  .chat-body {
+    background-color: $chat-body-color;
+    overflow-y: scroll;
+    overflow-x: hidden;
+    height: $height * .9;
+    font-family:Arial, Helvetica, sans-serif;
+
+    p.chat-body__botMsg {
+      background-color: $bot-text-bg-color;
+      margin: 0;
+      padding-top: 0.1em;
+      padding-bottom: 0.1em;
+    }
+
+    p.chat-body__userMsg{
+      background-color: $user-text-bg-color;
+      color: $user-text-color;
+      margin: 0;
+      padding-top: 0.1em;
+      padding-bottom: 0.1em;
+    }
+
+    .custom-styles{
+      color: $info !important;
+      img{
+        width: 4em;
+        height: 7em;
+      }
+    }
+
+  }
+
+
+  .chat-footer {
+    height: $height * .1;
+    background-color: $chat-body-color;
+    input {
+      background-color: $chat-body-color;
+    }
+    img{
+      height: 2.5em;
+    }
+  }
+}
+
+.flip {
+  -webkit-perspective: 800;   
+          perspective: 800;
+        position: relative;
+        text-align: center;
+}
+.flip .card.flipped {
+  -webkit-transform: rotatey(-180deg);
+          transform: rotatey(-180deg);
+}
+.flip .card {
+    width: 270px;
+    height: 178px;
+    -webkit-transform-style: preserve-3d;
+    -webkit-transition: 0.5s;
+    transform-style: preserve-3d;
+    transition: 0.5s;
+    background-color: #fff;
+   
+}
+.flip .card .face {
+  -webkit-backface-visibility: hidden ;
+    backface-visibility: hidden ;
+   z-index: 2;
+}
+.flip .card .front {
+   position: absolute;
+   width: 270px;
+   z-index: 1;
+}
+.flip .card .img {
+   position: relaitve;
+   width: 270px;
+   height: 178px;
+   z-index: 1;
+   border: 2px solid #000;
+}
+.flip .card .back {
+  padding-top: 10%;
+  -webkit-transform: rotatey(-180deg);
+          transform: rotatey(-180deg);
+}
+  .inner{margin:0px !important;}

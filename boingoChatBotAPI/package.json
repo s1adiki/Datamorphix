@@ -1,0 +1,26 @@
+{
+  "name": "boingochatbotapi",
+  "version": "1.0.0",
+  "description": "API service for boingo application",
+  "main": "./src/index.js",
+  "scripts": {
+    "start": "nodemon server.js"
+  },
+  "keywords": [
+    "API",
+    "NodeJs",
+    "ExpressJs"
+  ],
+  "author": "Manikanta Mahesh Byra",
+  "license": "ISC",
+  "dependencies": {
+    "express": "^4.16.2",
+    "mysql": "^2.15.0",
+    "node-cmd": "^3.0.0",
+    "node-powershell": "^3.3.1",
+    "shelljs": "^0.8.1"
+  },
+  "devDependencies": {
+    "nodemon": "^1.14.12"
+  }
+}

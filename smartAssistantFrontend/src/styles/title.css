@@ -1,0 +1,35 @@
+.Title {
+    background-color: #005A74;
+    width: 100%;
+}
+
+.Title-logo {
+    padding-left: 10px;
+    float: left;
+    height: 100px;
+}
+
+.Title-header {
+  padding: 15px;
+
+}
+
+.Title-title {
+    text-align: center;
+    color: #F9F895;
+  font-size: 3em;
+}
+
+.Title-description{
+    text-align: center;
+    color: white;
+    font-size: 1em;
+}
+
+.Title-button{
+    padding-right: 10px;
+    padding-top: 20px;
+    float: right;
+    color: #005A74;
+
+}
